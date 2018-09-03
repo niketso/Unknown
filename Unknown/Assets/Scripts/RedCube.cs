@@ -26,6 +26,6 @@ public class RedCube : MonoBehaviour, IInventoryItem {
     {
         //falta que pasa cuando se agarra
         gameObject.SetActive(false);
-        Debug.Log("inhabilitado");
+        Debug.Log("inhabilitadoRed");
     }
 }

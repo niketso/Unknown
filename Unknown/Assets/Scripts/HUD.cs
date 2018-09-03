@@ -21,7 +21,7 @@ public class HUD : MonoBehaviour {
 
             Debug.Log(image.enabled);
 
-            if (image.enabled)
+            if (!image.enabled)
             {
                 Debug.Log("ifCargaIMAGEN");
                 image.enabled = true;

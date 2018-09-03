@@ -61,13 +61,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\HUD.cs" />
-    <Compile Include="Assets\IInventoryItem.cs" />
-    <Compile Include="Assets\Inventory.cs" />
-    <Compile Include="Assets\RedCube.cs" />
+    <Compile Include="Assets\Scripts\BlueCube.cs" />
+    <Compile Include="Assets\Scripts\HUD.cs" />
+    <Compile Include="Assets\Scripts\IInventoryItem.cs" />
+    <Compile Include="Assets\Scripts\Inventory.cs" />
     <Compile Include="Assets\Scripts\MovePlayer.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\PlayerPickUp.cs" />
+    <Compile Include="Assets\Scripts\RedCube.cs" />
     <Compile Include="Assets\Scripts\TextActivator.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Users/Lichi/Desktop/UNKNOWN/Unknown/Unknown/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
