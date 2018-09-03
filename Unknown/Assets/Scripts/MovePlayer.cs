@@ -19,7 +19,7 @@ public class MovePlayer : MonoBehaviour
     {
         //animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
-        layerMask = LayerMask.GetMask("Destinations");
+        layerMask = LayerMask.GetMask("Destinations","PickUp");
     }
 
     void Update()
