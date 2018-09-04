@@ -65,6 +65,9 @@
     <Compile Include="Assets\Scripts\HUD.cs" />
     <Compile Include="Assets\Scripts\IInventoryItem.cs" />
     <Compile Include="Assets\Scripts\Inventory.cs" />
+    <Compile Include="Assets\Scripts\InventoryItemBase.cs" />
+    <Compile Include="Assets\Scripts\ItemDragHandler.cs" />
+    <Compile Include="Assets\Scripts\ItemDropHandler.cs" />
     <Compile Include="Assets\Scripts\MovePlayer.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\PlayerPickUp.cs" />

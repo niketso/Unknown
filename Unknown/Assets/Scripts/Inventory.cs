@@ -11,6 +11,8 @@ public class Inventory : MonoBehaviour {
 
     public event EventHandler<InventoryEventArgs> ItemAdded;
 
+    public event EventHandler<InventoryEventArgs> ItemRemoved;
+
     public void AddItem(IInventoryItem item)
     {
         Debug.Log("AddItemfunc");
@@ -27,6 +29,29 @@ public class Inventory : MonoBehaviour {
                 {
                     ItemAdded(this, new InventoryEventArgs(item));
                 }
+            }
+        }
+    }
+
+    public void RemoveItem(IInventoryItem item)
+    {
+        Debug.Log("Remove Item");
+        if (mItems.Contains(item))
+        {
+            
+            mItems.Remove(item);
+
+            item.OnDrop();
+
+            Collider collider = (item as MonoBehaviour).GetComponent<Collider>();
+            if (collider != null)
+            {
+                collider.enabled = true;
+            }
+
+            if (ItemRemoved != null)
+            {
+                ItemRemoved(this, new InventoryEventArgs(item));
             }
         }
     }
