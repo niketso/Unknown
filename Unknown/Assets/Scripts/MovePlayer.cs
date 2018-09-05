@@ -12,12 +12,16 @@ public class MovePlayer : MonoBehaviour
 
     //private Animator animator;
     private NavMeshAgent agent;
+    private Rigidbody rb;
     //public bool isRunning;
     //Camera cam;
 
     private Vector3 destinationPosition;
     int layerMask;
-
+    private void Awake() 
+    {
+        rb = GetComponent<Rigidbody>();
+    }
     void Start()
     {
         origin.transform.position = transform.position;
@@ -58,12 +62,14 @@ public class MovePlayer : MonoBehaviour
 
     public void TakeDamage()
     {
-        agent.destination = origin.transform.position;
+        agent.destination = origin.transform.position;        
+        
         if (cooldownDamage >= 0)
         {
             vidas -= 1;
             cooldownDamage = -3;
         }
+
         if(vidas<=0)
         {
             Die();

@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class PlayerCollision : MonoBehaviour {
 
-    public GameObject player;
-    public MovePlayer func;
+
+    [SerializeField]
+    private GameObject player;
+    [SerializeField]
+    private MovePlayer func;
 
 
     private void OnCollisionEnter(Collision collisionInfo)
@@ -18,8 +21,7 @@ public class PlayerCollision : MonoBehaviour {
     }
     private void OnTriggerEnter(Collider other)
     {        
-            Debug.Log("casd");
-            func.SetOrigin(other.transform);
+        func.SetOrigin(other.transform);
     }
     
 
