@@ -12,6 +12,7 @@ public interface IInventoryItem
     void OnPickup();
 
     void OnDrop();
+
 }
 
 public class InventoryEventArgs : EventArgs

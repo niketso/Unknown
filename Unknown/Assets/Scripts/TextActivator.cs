@@ -40,6 +40,7 @@ public class TextActivator : MonoBehaviour
 
     void ShowInfo(string name)
     {
+       
         actionDisplay.enabled = true; //Turn On Text Object
 
         actionDisplay.text = name; //Update Text

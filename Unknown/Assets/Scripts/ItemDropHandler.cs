@@ -12,6 +12,7 @@ public class ItemDropHandler : MonoBehaviour, IDropHandler
         if (!RectTransformUtility.RectangleContainsScreenPoint(invPanel, Input.mousePosition))
         {
             Debug.Log("drop item1");
+            
         }
     }
 }
