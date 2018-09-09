@@ -18,6 +18,7 @@ public class MovePlayer : MonoBehaviour
 
     private Vector3 destinationPosition;
     int layerMask;
+    int layerMaskButton;
     private void Awake() 
     {
         rb = GetComponent<Rigidbody>();
@@ -27,7 +28,8 @@ public class MovePlayer : MonoBehaviour
         origin.transform.position = transform.position;
         //animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
-        layerMask = LayerMask.GetMask("Destinations");
+        layerMask = LayerMask.GetMask("Destinations","Hint");
+        layerMaskButton = LayerMask.GetMask("Button");
     }
 
     void Update()
@@ -43,6 +45,18 @@ public class MovePlayer : MonoBehaviour
             if (Physics.Raycast(ray, out hit, 100, layerMask) )
             {
                 agent.destination = hit.point; 
+            }
+
+            /*if (Physics.Raycast(ray, out hit, 100, layerMaskButton))
+            {
+                hit.collider.GetComponent<NotesController>().HideNoteImage();
+                Debug.Log("CloseClicked");
+            }*/
+
+            if (hit.collider.CompareTag("Button"))
+            {
+                hit.collider.GetComponent<NotesController>().HideNoteImage();
+                Debug.Log("CloseClicked");
             }
         }
 
