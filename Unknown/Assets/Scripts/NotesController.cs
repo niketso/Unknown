@@ -29,9 +29,7 @@ public class NotesController : MonoBehaviour
     {
         noteImage.enabled = true;
         Debug.Log("Text Enabled");
-       hideNoteButton.SetActive(true);
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+       hideNoteButton.SetActive(true);        
     }
 
     public void HideNoteImage()
@@ -39,7 +37,6 @@ public class NotesController : MonoBehaviour
         Debug.Log("HideNoteImage()");
         noteImage.enabled = false;
         hideNoteButton.SetActive(false);
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+      
     }
 }
