@@ -27,7 +27,7 @@ public class MovePlayer : MonoBehaviour
         origin.transform.position = transform.position;
         //animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
-        layerMask = LayerMask.GetMask("Destinations","Hint","Consumable");
+        layerMask = LayerMask.GetMask("Destinations","Hint","Consumable","Object");
         
     }
 
