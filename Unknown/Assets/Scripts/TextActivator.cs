@@ -15,7 +15,7 @@ public class TextActivator : MonoBehaviour
     {
         actionDisplay.enabled = false; //Start Out Disabled
 
-        layerMask = LayerMask.GetMask("Destinations", "Hint"); //Only Objects On The Character Layer Will Be Afected
+        layerMask = LayerMask.GetMask("Destinations", "Hint", "Consumable"); //Only Objects On The Character Layer Will Be Afected
     }
 
     // Update is called once per frame

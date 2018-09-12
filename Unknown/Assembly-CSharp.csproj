@@ -61,10 +61,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\InteractController.cs" />
+    <Compile Include="Assets\Scripts\InteractController.cs" />
     <Compile Include="Assets\Scripts\MovePlayer.cs" />
     <Compile Include="Assets\Scripts\NotesController.cs" />
     <Compile Include="Assets\Scripts\PlayerCollision.cs" />
+    <Compile Include="Assets\Scripts\Ropa.cs" />
     <Compile Include="Assets\Scripts\TextActivator.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Users/nicol/Desktop/Unknown/Unknown/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
