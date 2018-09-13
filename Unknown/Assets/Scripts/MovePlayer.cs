@@ -84,7 +84,7 @@ public class MovePlayer : MonoBehaviour
         }
 
         if(vidas<=0)
-        {
+        {             
             Die();
         }
         
@@ -94,6 +94,11 @@ public class MovePlayer : MonoBehaviour
     public void SetOrigin(Transform pos)
     {
         origin.transform.position = pos.position;
+    }
+
+    public int GetVidas()
+    {
+        return vidas;
     }
 
     void Die()
