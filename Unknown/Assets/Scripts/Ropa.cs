@@ -7,17 +7,21 @@ public class Ropa : MonoBehaviour {
     
     [SerializeField] Material mat;
     [SerializeField] GameObject consumable;
+    [SerializeField] GameObject container;
 
     private void OnTriggerEnter(Collider other)
     {
         GameObject plyr = GameObject.FindGameObjectWithTag("Player");
-        if (plyr)
+        if (!container)
         {
-            MeshRenderer plyrMesh = plyr.GetComponent<MeshRenderer>();
-            plyrMesh.material = mat; 
-        }
+            if (plyr)
+            {
+                MeshRenderer plyrMesh = plyr.GetComponent<MeshRenderer>();
+                plyrMesh.material = mat;
+            }
 
-        Destroy(consumable);
+            Destroy(consumable);
+        }
     }
 
     

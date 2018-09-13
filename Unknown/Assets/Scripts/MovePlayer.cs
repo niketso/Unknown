@@ -9,6 +9,7 @@ public class MovePlayer : MonoBehaviour
     public int vidas = 3;
     public GameObject origin;
     float cooldownDamage = 0;
+    public bool hasKey;
 
     //private Animator animator;
     private NavMeshAgent agent;
@@ -86,9 +87,7 @@ public class MovePlayer : MonoBehaviour
         if(vidas<=0)
         {
             Die();
-        }
-        
-         
+        }        
     }
 
     public void SetOrigin(Transform pos)
@@ -100,5 +99,9 @@ public class MovePlayer : MonoBehaviour
     {
         Destroy(gameObject);
     }
-
+    
+    public bool GetKey()
+    {
+        return hasKey;
+    }
 }
