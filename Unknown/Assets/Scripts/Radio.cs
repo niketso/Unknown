@@ -15,11 +15,11 @@ public class Radio : MonoBehaviour {
         }
             
     }
-    private void OnCollisionEnter(Collision collision)
+    
+    private void OnTriggerEnter(Collider other)
     {
-        plyr= GameObject.FindGameObjectWithTag("Player");
-
-        Debug.Log("llego");
+        plyr = GameObject.FindGameObjectWithTag("Player");
+       
     }
 
     private void Update()
