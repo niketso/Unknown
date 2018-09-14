@@ -9,16 +9,14 @@ public class NotesController : MonoBehaviour
     [SerializeField] private Image noteImage;
     [SerializeField] private GameObject hideNoteButton;
 
-
-
     void Start()
     {
         noteImage.enabled = false;
-       hideNoteButton.SetActive(false);
+        hideNoteButton.SetActive(false);
     }
     private void OnTriggerEnter(Collider other)
     {
-         GameObject plyr = GameObject.FindGameObjectWithTag("Player") ;
+        GameObject plyr = GameObject.FindGameObjectWithTag("Player");
         if (plyr)
         {
             ShowNoteImage();
@@ -29,14 +27,13 @@ public class NotesController : MonoBehaviour
     {
         noteImage.enabled = true;
         Debug.Log("Text Enabled");
-       hideNoteButton.SetActive(true);        
+        hideNoteButton.SetActive(true);        
     }
 
     public void HideNoteImage()
     {
         Debug.Log("HideNoteImage()");
         noteImage.enabled = false;
-        hideNoteButton.SetActive(false);
-      
+        hideNoteButton.SetActive(false);      
     }
 }
