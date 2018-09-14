@@ -11,6 +11,8 @@ public class NotesControllerContainer : MonoBehaviour
     [SerializeField] private GameObject hideNoteButton;
     [SerializeField] private GameObject hideNoteButtonClosed;
     public MovePlayer player;
+    [SerializeField]
+    private GameObject tapa;
 
     void Start()
     {
@@ -26,8 +28,11 @@ public class NotesControllerContainer : MonoBehaviour
         {
             if (!player.GetKey())
                 ShowNoteImageClosed();
-            if(player.GetKey())
-                ShowNoteImage(); 
+            else if (player.GetKey())
+            {
+                Destroy(tapa);
+                ShowNoteImage();
+            }
         }
     }
     

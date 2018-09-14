@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MovePlayer : MonoBehaviour
 {
@@ -10,30 +11,48 @@ public class MovePlayer : MonoBehaviour
     public GameObject origin;
     float cooldownDamage = 0;
     public bool hasKey;
+    public GameObject ropa;
 
-    //private Animator animator;
+    
     private NavMeshAgent agent;
     private Rigidbody rb;
-    //public bool isRunning;
-    //Camera cam;
+    
 
     private Vector3 destinationPosition;
-    int layerMask;
+    int layerMask1;
+    int layerMask2;
+    int layerMask3;
+    
+
+    public bool hasRopa = false;
+    
+
     private void Awake() 
     {
         rb = GetComponent<Rigidbody>();
+        
     }
     void Start()
     {
         origin.transform.position = transform.position;
         //animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
-        layerMask = LayerMask.GetMask("Destinations","Hint","Consumable","Object");
+        layerMask1 = LayerMask.GetMask("Destinations");
+        layerMask2 = LayerMask.GetMask("Object", "Hint");
+        layerMask3 = LayerMask.GetMask("Consumable");
         
+
+        Debug.Log("tiene ropa = " + hasRopa);
+
     }
 
     void Update()
-    {
+    {       
+
+        //Debug.Log(agent.isStopped);
+        //Debug.Log("destino" + agent.destination);
+        //Debug.Log("remaininDistance" + agent.remainingDistance);
+
         cooldownDamage += Time.deltaTime;
 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -42,37 +61,35 @@ public class MovePlayer : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            if (Physics.Raycast(ray, out hit, 100, layerMask) )
+            if (Physics.Raycast(ray, out hit, 100, layerMask1))
             {
-                agent.destination = hit.point; 
+                agent.stoppingDistance = 0;
+                agent.destination = hit.point;                
             }
-
-            /*if (Physics.Raycast(ray, out hit, 100, layerMaskButton))
+            else if (Physics.Raycast(ray, out hit, 100, layerMask2))
             {
-                hit.collider.GetComponent<NotesController>().HideNoteImage();
-                Debug.Log("CloseClicked");
-            }*/
-
-            /*if (hit.collider.CompareTag("Button"))
+                agent.stoppingDistance = 1;
+                agent.destination = hit.point;                
+            }
+            else if (Physics.Raycast(ray, out hit, 100, layerMask3))
             {
-                hit.collider.GetComponent<NotesController>().HideNoteImage();
-                Debug.Log("CloseClicked");
-            */
+                agent.stoppingDistance = 1;
+                agent.destination = hit.point;
+            }
+            
         }
 
-       
-       
-        /*if (agent.remainingDistance <= agent.stoppingDistance)
-        {
-            isRunning = false;
-        }
+        if (agent.remainingDistance >= agent.stoppingDistance)
+            agent.isStopped = false;
         else
         {
-            isRunning = true;
+            agent.isStopped = true;
         }
 
-        animator.SetBool("Running", isRunning);*/
+       
     }
+
+
 
     public void TakeDamage()
     {
