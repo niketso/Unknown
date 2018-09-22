@@ -12,15 +12,20 @@ public class Ropa : MonoBehaviour {
     private void OnTriggerEnter(Collider other)
     {
         GameObject plyr = GameObject.FindGameObjectWithTag("Player");
+        MovePlayer movePlayer = plyr.GetComponent<MovePlayer>();
+
         if (!container)
         {
             if (plyr)
             {
                 MeshRenderer plyrMesh = plyr.GetComponent<MeshRenderer>();
                 plyrMesh.material = mat;
+                movePlayer.hasRopa = true;
+                Debug.Log("tiene ropa = " + movePlayer.hasRopa);
             }
 
             Destroy(consumable);
+           
         }
     }
 

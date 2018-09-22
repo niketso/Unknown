@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerCollision : MonoBehaviour {
 
@@ -17,7 +18,8 @@ public class PlayerCollision : MonoBehaviour {
     {
         if (collisionInfo.collider.tag == "Enemy")
         {
-            func.TakeDamage();   
+            //func.TakeDamage();
+            SceneManager.LoadScene("GameOver");
         }
 
     }
@@ -27,7 +29,7 @@ public class PlayerCollision : MonoBehaviour {
         
         if (func.GetKey())
         {
-            Destroy(tapa);
+            //Destroy(tapa);
         }
     }
     
