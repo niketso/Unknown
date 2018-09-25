@@ -15,11 +15,15 @@ public class PlayerCollision : MonoBehaviour {
     [SerializeField]
     private GameObject key;
     [SerializeField]
+    private GameObject fireExt;
+    [SerializeField]
     private GameObject tapa;
     [SerializeField]
     private GameObject door;
     [SerializeField]
     private GameObject corridor;
+    [SerializeField]
+    private GameObject bed;
     [SerializeField]
     private AudioSource sound;
     [SerializeField]
@@ -68,6 +72,12 @@ public class PlayerCollision : MonoBehaviour {
         {
             cam1.transform.localPosition = new Vector3(13.487f, 30.924f, 9.782f);
             cam1.transform.localRotation = Quaternion.Euler(14.635f, 130.187f, -0.591f);
+            bed.SetActive(false);
+        }
+
+        if(other.tag == "FireExt")
+        {
+            //Guardar en inventario? 
         }
     }
 }

@@ -13,6 +13,7 @@ TagManager:
   - Container
   - Door
   - Corridor
+  - FireExt
   layers:
   - Default
   - TransparentFX
