@@ -8,6 +8,11 @@ TagManager:
   - Destination
   - Button
   - Ropa
+  - Terrain
+  - Key
+  - Container
+  - Door
+  - Corridor
   layers:
   - Default
   - TransparentFX

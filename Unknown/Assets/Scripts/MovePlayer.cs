@@ -12,6 +12,7 @@ public class MovePlayer : MonoBehaviour
     float cooldownDamage = 0;
     public bool hasKey;
     public GameObject ropa;
+    public int puzzleNumber = 1;
 
     
     private NavMeshAgent agent;
@@ -85,11 +86,8 @@ public class MovePlayer : MonoBehaviour
         {
             agent.isStopped = true;
         }
-
        
     }
-
-
 
     public void TakeDamage()
     {
@@ -125,5 +123,20 @@ public class MovePlayer : MonoBehaviour
     public bool GetKey()
     {
         return hasKey;
+    }
+
+    public void PickKey()
+    {
+        hasKey = true;
+    }
+
+    public void setPuzzleNumber()
+    {
+        puzzleNumber++;
+    }
+
+    public int getPuzzleNumber()
+    {
+        return puzzleNumber;
     }
 }
