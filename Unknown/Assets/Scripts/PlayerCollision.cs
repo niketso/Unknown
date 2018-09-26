@@ -7,7 +7,6 @@ public class PlayerCollision : MonoBehaviour {
 
     [SerializeField]
     private Camera cam1;
-
     [SerializeField]
     private GameObject player;
     [SerializeField]
@@ -23,6 +22,12 @@ public class PlayerCollision : MonoBehaviour {
     [SerializeField]
     private GameObject corridor;
     [SerializeField]
+    private GameObject gotoLobby;
+    [SerializeField]
+    private GameObject lobby;
+    [SerializeField]
+    private GameObject escapeHospital;
+    [SerializeField]
     private GameObject bed;
     [SerializeField]
     private AudioSource sound;
@@ -32,8 +37,9 @@ public class PlayerCollision : MonoBehaviour {
     private AudioClip doorSound;
     [SerializeField]
     private AudioClip hurtSound;
+
     
-    private Transform camPos2;
+
 
     private void OnCollisionEnter(Collision collisionInfo)
     {
@@ -66,6 +72,7 @@ public class PlayerCollision : MonoBehaviour {
             Destroy(door);
             sound.PlayOneShot(doorSound);
             corridor.SetActive(true);
+            gotoLobby.SetActive(true);
         }
 
         if(other.tag == "Corridor")
@@ -75,9 +82,22 @@ public class PlayerCollision : MonoBehaviour {
             bed.SetActive(false);
         }
 
-        if(other.tag == "FireExt")
+        /*if(other.tag == "FireExt")
         {
             //Guardar en inventario? 
+        }*/
+
+        if(other.tag == "Lobby")
+        {
+            cam1.transform.localPosition = new Vector3(42.5119f, 31.492f, -14.42264f);
+            cam1.transform.localRotation = Quaternion.Euler(19.116f, -135.103f, 0f);
+            lobby.SetActive(true);
+            corridor.SetActive(false);
+        }
+
+        if(other.tag == "Radio")
+        {
+            escapeHospital.SetActive(true);
         }
     }
 }

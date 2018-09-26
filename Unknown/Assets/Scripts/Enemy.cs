@@ -5,7 +5,8 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour {
     
-   [SerializeField] GameObject radio;
+    [SerializeField] GameObject radio;
+    
 
     private NavMeshAgent agent;
 
@@ -17,6 +18,7 @@ public class Enemy : MonoBehaviour {
     public void DistractZombie()
     {
         agent.destination = radio.transform.position;
+        
 
         //Destroy(this.gameObject);
     }
