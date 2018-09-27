@@ -30,8 +30,7 @@ public class MovePlayer : MonoBehaviour
 
     private void Awake() 
     {
-        rb = GetComponent<Rigidbody>();
-        
+        rb = GetComponent<Rigidbody>();        
     }
     void Start()
     {
@@ -117,7 +116,7 @@ public class MovePlayer : MonoBehaviour
 
     void Die()
     {
-        Destroy(gameObject);
+        SceneManager.LoadScene("GameOver");
     }
     
     public bool GetKey()
