@@ -11,12 +11,18 @@ public class Inventory : MonoBehaviour
 
     [SerializeField]
     protected List<Slot> slots = new List<Slot>();
+    /*  [SerializeField]
+      protected ItemDefinition apple;
+      [SerializeField]
+      protected ItemDefinition tomato;
+      [SerializeField]
+      protected ItemDefinition potato;
+  
     [SerializeField]
-    protected ItemDefinition apple;
+    protected ItemDefinition key;
+    */
     [SerializeField]
-    protected ItemDefinition tomato;
-    [SerializeField]
-    protected ItemDefinition potato;
+    protected ItemDefinition extinguisher;
 
     public virtual DraggingSlot DraggingSlot
     {
@@ -32,9 +38,11 @@ public class Inventory : MonoBehaviour
 
     protected virtual void Awake()
     {
-        AddNewItem(new Item(this.apple, 5));
-        AddNewItem(new Item(this.tomato, 5));
-        AddNewItem(new Item(this.potato, 5));
+        //AddNewItem(new Item(this.apple, 5));
+        //AddNewItem(new Item(this.tomato, 5));
+        //AddNewItem(new Item(this.potato, 5));
+        //AddNewItem(new Item(this.key, 0));
+        AddNewItem(new Item(this.extinguisher, 0));
     }
 
     protected virtual void OnValidate()

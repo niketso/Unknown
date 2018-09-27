@@ -24,6 +24,13 @@ public class DropItem : MonoBehaviour, IDropHandler
                 Instantiate<GameObject>(this.inventory.DraggingSlot.CachedSlot.Item.Definition.Prefab, hit.point, Quaternion.identity);
                 this.inventory.DraggingSlot.Slot.RemoveItem();
             }
+
+            if (hit.collider.CompareTag("Enemy") && this.inventory.DraggingSlot.Slot.CanRemoveItem())
+            {
+                Instantiate<GameObject>(this.inventory.DraggingSlot.CachedSlot.Item.Definition.Prefab, hit.point, Quaternion.identity);
+                
+                this.inventory.DraggingSlot.Slot.RemoveItem();
+            }
         }
     }
 
