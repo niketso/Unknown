@@ -17,7 +17,7 @@ public class ReplayButton : MonoBehaviour
 
     public void Replay()
     {
-        SceneManager.LoadScene("Prototipo");
+        SceneManager.LoadScene("HospitalPrototipo");
     }
 
 }

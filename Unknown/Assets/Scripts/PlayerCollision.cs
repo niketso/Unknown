@@ -14,8 +14,6 @@ public class PlayerCollision : MonoBehaviour {
     [SerializeField]
     private GameObject key;
     [SerializeField]
-    private GameObject fireExt;
-    [SerializeField]
     private GameObject tapa;
     [SerializeField]
     private GameObject door;
@@ -32,13 +30,15 @@ public class PlayerCollision : MonoBehaviour {
     [SerializeField]
     private AudioSource sound;
     [SerializeField]
-    private AudioClip keySound;
+    private AudioClip pickUpSound;
     [SerializeField]
     private AudioClip doorSound;
     [SerializeField]
     private AudioClip hurtSound;
+    [SerializeField]
+    private AudioClip radioSound;
 
-    
+
 
 
     private void OnCollisionEnter(Collision collisionInfo)
@@ -64,7 +64,7 @@ public class PlayerCollision : MonoBehaviour {
         {
             func.PickKey();
             Destroy(key);
-            sound.PlayOneShot(keySound);
+            sound.PlayOneShot(pickUpSound);
         }
 
         if(other.tag == "Door" && func.GetKey())
@@ -82,10 +82,10 @@ public class PlayerCollision : MonoBehaviour {
             bed.SetActive(false);
         }
 
-        /*if(other.tag == "FireExt")
+        if(other.tag == "FireExt")
         {
-            //Guardar en inventario? 
-        }*/
+            sound.PlayOneShot(pickUpSound);
+        }
 
         if(other.tag == "Lobby")
         {
@@ -97,6 +97,7 @@ public class PlayerCollision : MonoBehaviour {
 
         if(other.tag == "Radio")
         {
+            sound.PlayOneShot(radioSound);
             escapeHospital.SetActive(true);
         }
     }

@@ -6,7 +6,8 @@ using UnityEngine.Events;
 public class Extinguisher : MonoBehaviour {
 
     public UnityEvent hitZombie;
-    GameObject enmy;
+    GameObject enemy;
+    
     private void Awake()
     {
 
@@ -18,12 +19,12 @@ public class Extinguisher : MonoBehaviour {
     }
     private void OnTriggerEnter(Collider other)
     {
-        enmy = GameObject.FindGameObjectWithTag("Enemy");
+        enemy = GameObject.FindGameObjectWithTag("Enemy");
 
     }
     private void Update()
     {
-        if (enmy)
+        if (enemy)
         {
             ExtinguisherUsed();
         }

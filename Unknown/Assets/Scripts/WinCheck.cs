@@ -8,13 +8,12 @@ public class WinCheck : MonoBehaviour {
     private void OnTriggerEnter(Collider collider)
     {
         GameObject plyr = GameObject.FindGameObjectWithTag("Player");
-        MovePlayer movePlayer = plyr.GetComponent<MovePlayer>();
+        
 
-        if (collider.tag == "Player" && movePlayer.hasRopa == true)
+        if (collider.tag == "Player")
         {
             WinScene();
-        }
-       
+        }      
 
     }
 
