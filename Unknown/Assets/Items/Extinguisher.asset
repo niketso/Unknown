@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82f7ed15a16e18942a80caa86a9d144f, type: 3}
   m_Name: Extinguisher
   m_EditorClassIdentifier: 
-  icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  icon: {fileID: 21300000, guid: 6b24c12b065cd6a4fb2512674fea5446, type: 3}
   maxStackAmount: 1
   prefab: {fileID: 1916588416952894, guid: 5622282c3f6166344a9c57e05653496b, type: 2}
   recipes: []

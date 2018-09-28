@@ -42,7 +42,7 @@ public class Inventory : MonoBehaviour
         //AddNewItem(new Item(this.tomato, 5));
         //AddNewItem(new Item(this.potato, 5));
         //AddNewItem(new Item(this.key, 0));
-        AddNewItem(new Item(this.extinguisher, 0));
+        //AddNewItem(new Item(this.extinguisher, 0));
     }
 
     protected virtual void OnValidate()
