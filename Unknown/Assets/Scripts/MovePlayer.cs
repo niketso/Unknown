@@ -40,10 +40,6 @@ public class MovePlayer : MonoBehaviour
         layerMask1 = LayerMask.GetMask("Destinations");
         layerMask2 = LayerMask.GetMask("Object", "Hint");
         layerMask3 = LayerMask.GetMask("Consumable");
-        
-
-        Debug.Log("tiene ropa = " + hasRopa);
-
     }
 
     void Update()

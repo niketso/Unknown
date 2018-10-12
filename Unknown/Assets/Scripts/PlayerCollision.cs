@@ -18,16 +18,6 @@ public class PlayerCollision : MonoBehaviour {
     [SerializeField]
     private GameObject door;
     [SerializeField]
-    private GameObject corridor;
-    [SerializeField]
-    private GameObject gotoLobby;
-    [SerializeField]
-    private GameObject lobby;
-    [SerializeField]
-    private GameObject escapeHospital;
-    [SerializeField]
-    private GameObject bed;
-    [SerializeField]
     private AudioSource sound;
     [SerializeField]
     private AudioClip pickUpSound;
@@ -39,6 +29,21 @@ public class PlayerCollision : MonoBehaviour {
     private AudioClip radioSound;
 
 
+    [SerializeField]
+    private GameObject corridor;
+    [SerializeField]
+    private GameObject goToCorridor;    
+    [SerializeField]
+    private GameObject lobby;
+    [SerializeField]
+    private GameObject goToLobby;
+    [SerializeField]
+    private GameObject escapeHospital;
+    [SerializeField]
+    private GameObject room;
+    [SerializeField]
+    private GameObject goToRoom;
+
 
 
     private void OnCollisionEnter(Collision collisionInfo)
@@ -47,10 +52,9 @@ public class PlayerCollision : MonoBehaviour {
         {
             sound.PlayOneShot(hurtSound);
             func.TakeDamage();
-            //SceneManager.LoadScene("GameOver");
         }
-
     }
+
     private void OnTriggerEnter(Collider other)
     {        
         func.SetOrigin(other.transform);
@@ -67,22 +71,35 @@ public class PlayerCollision : MonoBehaviour {
             sound.PlayOneShot(pickUpSound);
         }
 
-        if(other.tag == "Door" && func.GetKey())
+        if(other.tag == "Door" && func.GetKey()) //cambiar y poner llave como item para arrastrar a la puerta, crear script de puertas
         {
             Destroy(door);
             sound.PlayOneShot(doorSound);
-            corridor.SetActive(true);
-            gotoLobby.SetActive(true);
+            goToCorridor.SetActive(true);
+            goToLobby.SetActive(true);
         }
 
         if(other.tag == "Corridor")
         {
             cam1.transform.localPosition = new Vector3(13.487f, 30.924f, 9.782f);
             cam1.transform.localRotation = Quaternion.Euler(14.635f, 130.187f, -0.591f);
-            bed.SetActive(false);
+            corridor.SetActive(true);
+            room.SetActive(false);
+            goToRoom.SetActive(true);
+            goToCorridor.SetActive(false);
         }
 
-        if(other.tag == "FireExt")
+        if (other.tag == "Room")
+        {
+            cam1.transform.localPosition = new Vector3(42.81741f, 31.25477f, 9.659981f);
+            cam1.transform.localRotation = Quaternion.Euler(19.631f, -126.681f, 0f);
+            corridor.SetActive(false);
+            room.SetActive(true);
+            goToCorridor.SetActive(true);
+            goToRoom.SetActive(false);
+        }
+
+        if (other.tag == "FireExt")
         {
             sound.PlayOneShot(pickUpSound);
         }

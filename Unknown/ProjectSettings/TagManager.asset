@@ -16,6 +16,7 @@ TagManager:
   - FireExt
   - Lobby
   - Radio
+  - Room
   layers:
   - Default
   - TransparentFX
