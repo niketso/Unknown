@@ -23,6 +23,8 @@ public class MovePlayer : MonoBehaviour
     int layerMask1;
     int layerMask2;
     int layerMask3;
+
+    public bool moving = false;
     
 
     public bool hasRopa = false;
@@ -59,8 +61,15 @@ public class MovePlayer : MonoBehaviour
         {
             if (Physics.Raycast(ray, out hit, 100, layerMask1))
             {
-                agent.stoppingDistance = 0;
-                agent.destination = hit.point;                
+                if (moving == false )
+                {
+                    agent.stoppingDistance = 0;
+                    agent.destination = hit.point;
+                    moving = true;
+                   // Debug.Log(moving);
+                    
+                }
+                 
             }
             else if (Physics.Raycast(ray, out hit, 100, layerMask2))
             {
@@ -133,5 +142,14 @@ public class MovePlayer : MonoBehaviour
     public int getPuzzleNumber()
     {
         return puzzleNumber;
+    }
+
+    public bool IsMoving()
+    {
+        return moving;
+    }
+    public void Arrived()
+    {
+        moving = false;
     }
 }
