@@ -6,10 +6,8 @@ using UnityEngine.SceneManagement;
 public class WinCheck : MonoBehaviour {
 
     private void OnTriggerEnter(Collider collider)
-    {
-        GameObject plyr = GameObject.FindGameObjectWithTag("Player");
+    {      
         
-
         if (collider.tag == "Player")
         {
             WinScene();

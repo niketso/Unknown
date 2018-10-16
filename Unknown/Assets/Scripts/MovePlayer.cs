@@ -16,7 +16,8 @@ public class MovePlayer : MonoBehaviour
 
     
     private NavMeshAgent agent;
-    private Rigidbody rb;
+    private Animator anim;
+   // private Rigidbody rb;
     
 
     private Vector3 destinationPosition;
@@ -28,20 +29,20 @@ public class MovePlayer : MonoBehaviour
     
 
     public bool hasRopa = false;
-    
 
-    private void Awake() 
+    private void Awake()
     {
-        rb = GetComponent<Rigidbody>();        
-    }
-    void Start()
-    {
-        origin.transform.position = transform.position;
-        //animator = GetComponent<Animator>();
+        anim = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
+
         layerMask1 = LayerMask.GetMask("Destinations");
         layerMask2 = LayerMask.GetMask("Object", "Hint");
         layerMask3 = LayerMask.GetMask("Consumable");
+    }
+
+    void Start()
+    {
+        origin.transform.position = transform.position;               
     }
 
     void Update()
@@ -65,8 +66,10 @@ public class MovePlayer : MonoBehaviour
                 {
                     agent.stoppingDistance = 0;
                     agent.destination = hit.point;
+                    anim.SetTrigger("Walk");
+                    
                     moving = true;
-                   // Debug.Log(moving);
+                   
                     
                 }
                  
@@ -74,12 +77,17 @@ public class MovePlayer : MonoBehaviour
             else if (Physics.Raycast(ray, out hit, 100, layerMask2))
             {
                 agent.stoppingDistance = 1;
-                agent.destination = hit.point;                
+                agent.destination = hit.point;
+                anim.SetTrigger("Walk");
+                
+
             }
             else if (Physics.Raycast(ray, out hit, 100, layerMask3))
             {
                 agent.stoppingDistance = 1;
                 agent.destination = hit.point;
+                anim.SetTrigger("Walk");
+                
             }
             
         }
@@ -151,5 +159,7 @@ public class MovePlayer : MonoBehaviour
     public void Arrived()
     {
         moving = false;
+        anim.SetTrigger("Idle");
     }
+    
 }
