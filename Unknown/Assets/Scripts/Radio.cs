@@ -5,21 +5,27 @@ using UnityEngine.Events;
 
 public class Radio : MonoBehaviour {
     public UnityEvent zombiedistract;
-    GameObject plyr;
+    [SerializeField]
+    private AudioSource sound;
+    [SerializeField]
+    private AudioClip radioSound;
+    bool plyr;
+
     private void Awake()
     {
-
         if(zombiedistract == null)
         {
             zombiedistract = new UnityEvent();
-        }
-            
+        }            
     }
     
     private void OnTriggerEnter(Collider other)
     {
-        plyr = GameObject.FindGameObjectWithTag("Player");
-       
+        if (other.gameObject.tag == "Batteries")
+        {
+            plyr = true;
+            Destroy(other.gameObject);
+        }
     }
 
     private void Update()
@@ -29,8 +35,10 @@ public class Radio : MonoBehaviour {
             RadioUsed();
         }
     }
+
     private void RadioUsed()
     {
+        sound.PlayOneShot(radioSound);
         zombiedistract.Invoke();
     }
 }

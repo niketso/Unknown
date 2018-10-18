@@ -6,15 +6,10 @@ public class WaypointDetector : MonoBehaviour {
 
     private MovePlayer pj;
     
-    
-
-    
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         pj = other.GetComponent<MovePlayer>();
-        pj.Arrived();
-        
-        
-       // Debug.Log(pj.moving);
+        pj.Arrived();       
+       
     }
 }

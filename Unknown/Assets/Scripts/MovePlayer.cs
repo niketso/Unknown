@@ -46,11 +46,7 @@ public class MovePlayer : MonoBehaviour
     }
 
     void Update()
-    {       
-
-        //Debug.Log(agent.isStopped);
-        //Debug.Log("destino" + agent.destination);
-        //Debug.Log("remaininDistance" + agent.remainingDistance);
+    {             
 
         cooldownDamage += Time.deltaTime;
 
@@ -86,7 +82,8 @@ public class MovePlayer : MonoBehaviour
             {
                 agent.stoppingDistance = 1;
                 agent.destination = hit.point;
-                anim.SetTrigger("Walk");
+                //anim.SetTrigger("Walk");
+                
                 
             }
             
@@ -95,7 +92,7 @@ public class MovePlayer : MonoBehaviour
         if (agent.remainingDistance >= agent.stoppingDistance)
             agent.isStopped = false;
         else
-        {
+        {            
             agent.isStopped = true;
         }
        

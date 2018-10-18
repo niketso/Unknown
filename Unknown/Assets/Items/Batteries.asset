@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82f7ed15a16e18942a80caa86a9d144f, type: 3}
+  m_Name: Batteries
+  m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: ea5fe4b0eec5e3444b152597502b7e2d, type: 3}
+  maxStackAmount: 1
+  prefab: {fileID: 1657525448019016, guid: 37e1453516e2f4e4fa084cb9a5034405, type: 2}
+  recipes: []

@@ -25,10 +25,17 @@ public class DropItem : MonoBehaviour, IDropHandler
                 this.inventory.DraggingSlot.Slot.RemoveItem();
             }*/
 
-            if (hit.collider.CompareTag("Enemy") && this.inventory.DraggingSlot.Slot.CanRemoveItem())
+            if (this.inventory.DraggingSlot.CachedSlot.Item.Definition.Prefab.tag == "FireExt" &&hit.collider.CompareTag("Enemy") && this.inventory.DraggingSlot.Slot.CanRemoveItem())
             {
                 Instantiate<GameObject>(this.inventory.DraggingSlot.CachedSlot.Item.Definition.Prefab, hit.point, Quaternion.identity);
                 
+                this.inventory.DraggingSlot.Slot.RemoveItem();
+            }
+
+            if (this.inventory.DraggingSlot.CachedSlot.Item.Definition.Prefab.tag == "Batteries" && hit.collider.CompareTag("Radio") && this.inventory.DraggingSlot.Slot.CanRemoveItem())
+            {
+                Instantiate<GameObject>(this.inventory.DraggingSlot.CachedSlot.Item.Definition.Prefab, hit.point, Quaternion.identity);
+
                 this.inventory.DraggingSlot.Slot.RemoveItem();
             }
         }
