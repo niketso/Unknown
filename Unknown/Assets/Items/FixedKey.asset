@@ -9,9 +9,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 82f7ed15a16e18942a80caa86a9d144f, type: 3}
-  m_Name: Potato
+  m_Name: FixedKey
   m_EditorClassIdentifier: 
-  icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  icon: {fileID: 21300000, guid: d3a2077b20fbf6d45a198c5260da9937, type: 3}
   maxStackAmount: 5
   prefab: {fileID: 1863102051260696, guid: 7065a11dc47e15e4482c711431254a14, type: 2}
   recipes: []
