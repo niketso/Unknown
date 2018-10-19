@@ -43,7 +43,7 @@ public class PlayerCollision : MonoBehaviour {
     private GameObject room;
     [SerializeField]
     private GameObject goToRoom;
-
+    
 
 
     private void OnCollisionEnter(Collision collisionInfo)
@@ -67,13 +67,15 @@ public class PlayerCollision : MonoBehaviour {
         if(other.tag == "Key")
         {
             func.PickKey();
+
             Destroy(key);
             sound.PlayOneShot(pickUpSound);
         }
 
         if(other.tag == "Door" && func.GetKey()) //cambiar y poner llave como item para arrastrar a la puerta, crear script de puertas
         {
-            Destroy(door);
+            //Destroy(door);
+            door.transform.position = new Vector3(0, -10, 0);
             sound.PlayOneShot(doorSound);
             goToCorridor.SetActive(true);
             goToLobby.SetActive(true);
@@ -85,8 +87,18 @@ public class PlayerCollision : MonoBehaviour {
             cam1.transform.localRotation = Quaternion.Euler(14.635f, 130.187f, -0.591f);
             corridor.SetActive(true);
             room.SetActive(false);
-            goToRoom.SetActive(true);
-            goToCorridor.SetActive(false);
+           
+            //goToCorridor.SetActive(false);
+            if (goToRoom.active == true)
+            {
+                goToRoom.transform.position = new Vector3(goToRoom.transform.position.x, goToRoom.transform.position.y + 10, goToRoom.transform.position.z);
+            }
+            else
+            {
+                goToRoom.SetActive(true);
+            }
+            
+            goToCorridor.transform.position = new Vector3(goToCorridor.transform.position.x, goToCorridor.transform.position.y - 10, goToCorridor.transform.position.z);
         }
 
         if (other.tag == "Room")
@@ -95,8 +107,10 @@ public class PlayerCollision : MonoBehaviour {
             cam1.transform.localRotation = Quaternion.Euler(19.631f, -126.681f, 0f);
             corridor.SetActive(false);
             room.SetActive(true);
-            goToCorridor.SetActive(true);
-            goToRoom.SetActive(false);
+            //goToCorridor.SetActive(true);
+            goToCorridor.transform.position = new Vector3(goToCorridor.transform.position.x, goToCorridor.transform.position.y + 10, goToCorridor.transform.position.z);
+            goToRoom.transform.position = new Vector3(goToRoom.transform.position.x, goToRoom.transform.position.y - 10, goToRoom.transform.position.z);
+           // goToRoom.SetActive(false);
         }
 
         if (other.tag == "FireExt")

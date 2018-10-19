@@ -13,6 +13,7 @@ public class MovePlayer : MonoBehaviour
     public bool hasKey;
     public GameObject ropa;
     public int puzzleNumber = 1;
+    private WaypointDetector wDetector;
 
     
     private NavMeshAgent agent;
@@ -56,17 +57,22 @@ public class MovePlayer : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
+            
+
             if (Physics.Raycast(ray, out hit, 100, layerMask1))
             {
-                if (moving == false )
+                wDetector = hit.collider.GetComponent<WaypointDetector>();
+               
+                if (moving == false  && wDetector.inWaypoint == false)
                 {
                     agent.stoppingDistance = 0;
                     agent.destination = hit.point;
                     anim.SetTrigger("Walk");
                     
                     moving = true;
-                   
                     
+
+
                 }
                  
             }
@@ -95,7 +101,7 @@ public class MovePlayer : MonoBehaviour
         {            
             agent.isStopped = true;
         }
-       
+        
     }
 
     public void TakeDamage()
@@ -156,6 +162,7 @@ public class MovePlayer : MonoBehaviour
     public void Arrived()
     {
         moving = false;
+        
         anim.SetTrigger("Idle");
     }
     

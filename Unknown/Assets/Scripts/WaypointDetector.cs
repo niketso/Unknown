@@ -4,12 +4,31 @@ using UnityEngine;
 
 public class WaypointDetector : MonoBehaviour {
 
-    private MovePlayer pj;
+    private MovePlayer plyr;
+    public bool inWaypoint = false;
     
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
-        pj = other.GetComponent<MovePlayer>();
-        pj.Arrived();       
-       
+
+        if (other.tag == "Player" )
+        {
+            plyr = other.GetComponent<MovePlayer>();
+            plyr.Arrived();
+            inWaypoint = true;
+            Debug.Log("entro");
+        }
+
+            
     }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag =="Player")
+        {
+            inWaypoint = false;
+            Debug.Log("salio");
+
+        }
+    }
+
 }
