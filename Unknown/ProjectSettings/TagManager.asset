@@ -18,6 +18,10 @@ TagManager:
   - Radio
   - Room
   - Batteries
+  - Corridor2
+  - Corridor3
+  - SideRoom
+  - Walls
   layers:
   - Default
   - TransparentFX

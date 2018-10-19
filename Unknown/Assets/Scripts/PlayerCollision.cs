@@ -36,6 +36,8 @@ public class PlayerCollision : MonoBehaviour {
     [SerializeField]
     private GameObject lobby;
     [SerializeField]
+    private GameObject sideRoom;
+    [SerializeField]
     private GameObject goToLobby;
     [SerializeField]
     private GameObject escapeHospital;
@@ -67,7 +69,7 @@ public class PlayerCollision : MonoBehaviour {
         if(other.tag == "Key")
         {
             func.PickKey();
-
+            other.transform.position = new Vector3(other.transform.position.x, goToRoom.transform.position.y - 10, goToRoom.transform.position.z);
             Destroy(key);
             sound.PlayOneShot(pickUpSound);
         }
@@ -84,7 +86,7 @@ public class PlayerCollision : MonoBehaviour {
         if(other.tag == "Corridor")
         {
             cam1.transform.localPosition = new Vector3(13.487f, 30.924f, 9.782f);
-            cam1.transform.localRotation = Quaternion.Euler(14.635f, 130.187f, -0.591f);
+            cam1.transform.localRotation = Quaternion.Euler(14.635f, 111f, -0.591f);
             corridor.SetActive(true);
             room.SetActive(false);
            
@@ -99,6 +101,25 @@ public class PlayerCollision : MonoBehaviour {
             }
             
             goToCorridor.transform.position = new Vector3(goToCorridor.transform.position.x, goToCorridor.transform.position.y - 10, goToCorridor.transform.position.z);
+        }
+
+        if (other.tag == "Corridor2")
+        {
+            cam1.transform.localPosition = new Vector3(13.75034f, 29.46022f, 10.14731f);
+            cam1.transform.localRotation = Quaternion.Euler(8.802f, 163.636f, 0f);
+        }
+
+        if (other.tag == "Corridor3")
+        {
+            cam1.transform.localPosition = new Vector3(13.37023f, 30.50673f, -1.573219f);
+            cam1.transform.localRotation = Quaternion.Euler(22.037f, 133.212f, 0f);
+            sideRoom.SetActive(true);
+        }
+
+        if (other.tag == "SideRoom")
+        {
+            cam1.transform.localPosition = new Vector3(17.90154f, 31.04953f, -2.218891f);
+            cam1.transform.localRotation = Quaternion.Euler(24.272f, 143.009f, 0f);
         }
 
         if (other.tag == "Room")
@@ -123,13 +144,18 @@ public class PlayerCollision : MonoBehaviour {
             cam1.transform.localPosition = new Vector3(42.5119f, 31.492f, -14.42264f);
             cam1.transform.localRotation = Quaternion.Euler(19.116f, -135.103f, 0f);
             lobby.SetActive(true);
-            corridor.SetActive(false);
+            //corridor.SetActive(false);
         }
 
         if(other.tag == "Radio")
         {
             sound.PlayOneShot(radioSound, 0.5f);
             escapeHospital.SetActive(true);
+        }
+
+        if(other.tag == "Batteries")
+        {
+            other.transform.position = new Vector3(other.transform.position.x, goToRoom.transform.position.y - 10, goToRoom.transform.position.z);
         }
     }
 }

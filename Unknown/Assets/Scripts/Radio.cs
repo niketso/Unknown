@@ -7,8 +7,11 @@ public class Radio : MonoBehaviour {
     public UnityEvent zombiedistract;
     [SerializeField]
     private AudioSource sound;
+    private int i = 0;
     [SerializeField]
     private AudioClip radioSound;
+    [SerializeField]
+    private GameObject escape;
     bool plyr;
 
     private void Awake()
@@ -25,6 +28,7 @@ public class Radio : MonoBehaviour {
         {
             plyr = true;
             Destroy(other.gameObject);
+
         }
     }
 
@@ -38,7 +42,12 @@ public class Radio : MonoBehaviour {
 
     private void RadioUsed()
     {
-        sound.PlayOneShot(radioSound);
+        if (i == 0)
+        {
+            sound.PlayOneShot(radioSound, 0.1f);
+            i++;
+        }
         zombiedistract.Invoke();
+        escape.SetActive(true);
     }
 }

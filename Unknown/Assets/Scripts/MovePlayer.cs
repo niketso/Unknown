@@ -25,6 +25,7 @@ public class MovePlayer : MonoBehaviour
     int layerMask1;
     int layerMask2;
     int layerMask3;
+    int layerMask4;
 
     public bool moving = false;
     
@@ -39,58 +40,56 @@ public class MovePlayer : MonoBehaviour
         layerMask1 = LayerMask.GetMask("Destinations");
         layerMask2 = LayerMask.GetMask("Object", "Hint");
         layerMask3 = LayerMask.GetMask("Consumable");
+        layerMask4 = LayerMask.GetMask("Ground");
     }
 
     void Start()
     {
         origin.transform.position = transform.position;               
     }
-
+//
     void Update()
     {             
 
         cooldownDamage += Time.deltaTime;
 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
+        
         RaycastHit hit;
 
-        if (Input.GetMouseButtonDown(0))
+        
+        
+
+        if (Input.GetMouseButtonDown(0) )
         {
             
-
             if (Physics.Raycast(ray, out hit, 100, layerMask1))
             {
+
                 wDetector = hit.collider.GetComponent<WaypointDetector>();
-               
-                if (moving == false  && wDetector.inWaypoint == false)
+
+                if (moving == false && wDetector.inWaypoint == false)
                 {
                     agent.stoppingDistance = 0;
                     agent.destination = hit.point;
                     anim.SetTrigger("Walk");
-                    
+
                     moving = true;
-                    
-
-
                 }
-                 
+
             }
             else if (Physics.Raycast(ray, out hit, 100, layerMask2))
             {
                 agent.stoppingDistance = 1;
                 agent.destination = hit.point;
                 anim.SetTrigger("Walk");
-                
-
             }
+
             else if (Physics.Raycast(ray, out hit, 100, layerMask3))
             {
                 agent.stoppingDistance = 1;
                 agent.destination = hit.point;
                 //anim.SetTrigger("Walk");
-                
-                
             }
             
         }
