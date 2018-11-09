@@ -1,11 +1,14 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour {
     
-   [SerializeField] GameObject radio;
+    [SerializeField] GameObject radio;
+    [SerializeField] AudioSource impact;
+    [SerializeField] AudioClip impactClip;
+    [SerializeField] Animator die;
+    
 
     private NavMeshAgent agent;
 
@@ -17,7 +20,23 @@ public class Enemy : MonoBehaviour {
     public void DistractZombie()
     {
         agent.destination = radio.transform.position;
+    }
 
-        //Destroy(this.gameObject);
+    IEnumerator playSound()
+    {
+        impact.PlayOneShot(impactClip);
+        die.Play("fallingback");
+        yield return new WaitForSeconds(1f);
+        
+        Destroy(this.gameObject);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "FireExt")
+        {
+            StartCoroutine(playSound());
+            Destroy(other.gameObject);
+        }
     }
 }

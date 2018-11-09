@@ -5,33 +5,157 @@ using UnityEngine.SceneManagement;
 
 public class PlayerCollision : MonoBehaviour {
 
-
+    [SerializeField]
+    private Camera cam1;
     [SerializeField]
     private GameObject player;
     [SerializeField]
     private MovePlayer func;
     [SerializeField]
+    private GameObject key;
+    [SerializeField]
     private GameObject tapa;
+    [SerializeField]
+    private GameObject door;
+    [SerializeField]
+    private AudioSource sound;
+    [SerializeField]
+    private AudioClip pickUpSound;
+    [SerializeField]
+    private AudioClip doorSound;
+    [SerializeField]
+    private AudioClip hurtSound;
+    [SerializeField]
+    private AudioClip radioSound;
+
+
+    [SerializeField]
+    private GameObject corridor;
+    [SerializeField]
+    private GameObject goToCorridor;    
+    [SerializeField]
+    private GameObject lobby;
+    [SerializeField]
+    private GameObject sideRoom;
+    [SerializeField]
+    private GameObject goToLobby;
+    [SerializeField]
+    private GameObject escapeHospital;
+    [SerializeField]
+    private GameObject room;
+    [SerializeField]
+    private GameObject goToRoom;
+    
 
 
     private void OnCollisionEnter(Collision collisionInfo)
     {
         if (collisionInfo.collider.tag == "Enemy")
         {
-            //func.TakeDamage();
-            SceneManager.LoadScene("GameOver");
+            sound.PlayOneShot(hurtSound);
+            func.TakeDamage();
         }
-
     }
+
     private void OnTriggerEnter(Collider other)
     {        
         func.SetOrigin(other.transform);
         
-        if (func.GetKey())
+        if (other.tag == "Container" && func.GetKey())
         {
-            //Destroy(tapa);
+            Destroy(tapa);
+        }
+
+        if(other.tag == "Key")
+        {
+            func.PickKey();
+            other.transform.position = new Vector3(other.transform.position.x, goToRoom.transform.position.y - 10, goToRoom.transform.position.z);
+            Destroy(key);
+            sound.PlayOneShot(pickUpSound);
+        }
+
+        if(other.tag == "Door" && func.GetKey()) //cambiar y poner llave como item para arrastrar a la puerta, crear script de puertas
+        {
+            //Destroy(door);
+            door.transform.position = new Vector3(0, -10, 0);
+            sound.PlayOneShot(doorSound);
+            goToCorridor.SetActive(true);
+            goToLobby.SetActive(true);
+        }
+
+        if(other.tag == "Corridor")
+        {
+            cam1.transform.localPosition = new Vector3(13.487f, 30.924f, 9.782f);
+            cam1.transform.localRotation = Quaternion.Euler(14.635f, 111f, -0.591f);
+            corridor.SetActive(true);
+            room.SetActive(false);
+           
+            //goToCorridor.SetActive(false);
+            if (goToRoom.active == true)
+            {
+                goToRoom.transform.position = new Vector3(goToRoom.transform.position.x, goToRoom.transform.position.y + 10, goToRoom.transform.position.z);
+            }
+            else
+            {
+                goToRoom.SetActive(true);
+            }
+            
+            goToCorridor.transform.position = new Vector3(goToCorridor.transform.position.x, goToCorridor.transform.position.y - 10, goToCorridor.transform.position.z);
+        }
+
+        if (other.tag == "Corridor2")
+        {
+            cam1.transform.localPosition = new Vector3(13.75034f, 29.46022f, 10.14731f);
+            cam1.transform.localRotation = Quaternion.Euler(8.802f, 163.636f, 0f);
+        }
+
+        if (other.tag == "Corridor3")
+        {
+            cam1.transform.localPosition = new Vector3(13.37023f, 30.50673f, -1.573219f);
+            cam1.transform.localRotation = Quaternion.Euler(22.037f, 133.212f, 0f);
+            sideRoom.SetActive(true);
+        }
+
+        if (other.tag == "SideRoom")
+        {
+            cam1.transform.localPosition = new Vector3(17.90154f, 31.04953f, -2.218891f);
+            cam1.transform.localRotation = Quaternion.Euler(24.272f, 143.009f, 0f);
+        }
+
+        if (other.tag == "Room")
+        {
+            cam1.transform.localPosition = new Vector3(42.81741f, 31.25477f, 9.659981f);
+            cam1.transform.localRotation = Quaternion.Euler(19.631f, -126.681f, 0f);
+            corridor.SetActive(false);
+            room.SetActive(true);
+            //goToCorridor.SetActive(true);
+            goToCorridor.transform.position = new Vector3(goToCorridor.transform.position.x, goToCorridor.transform.position.y + 10, goToCorridor.transform.position.z);
+            goToRoom.transform.position = new Vector3(goToRoom.transform.position.x, goToRoom.transform.position.y - 10, goToRoom.transform.position.z);
+           // goToRoom.SetActive(false);
+        }
+
+        if (other.tag == "FireExt")
+        {
+            sound.PlayOneShot(pickUpSound);
+        }
+
+        if(other.tag == "Lobby")
+        {
+            cam1.transform.localPosition = new Vector3(42.5119f, 31.492f, -14.42264f);
+            cam1.transform.localRotation = Quaternion.Euler(19.116f, -135.103f, 0f);
+            lobby.SetActive(true);
+            //corridor.SetActive(false);
+        }
+
+        if(other.tag == "Radio")
+        {
+            sound.PlayOneShot(radioSound, 0.5f);
+            escapeHospital.SetActive(true);
+        }
+
+        if(other.tag == "Batteries")
+        {
+            other.transform.position = new Vector3(other.transform.position.x, goToRoom.transform.position.y - 10, goToRoom.transform.position.z);
         }
     }
-    
-
 }

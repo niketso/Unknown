@@ -12,69 +12,84 @@ public class MovePlayer : MonoBehaviour
     float cooldownDamage = 0;
     public bool hasKey;
     public GameObject ropa;
+    public int puzzleNumber = 1;
+    private WaypointDetector wDetector;
 
     
     private NavMeshAgent agent;
-    private Rigidbody rb;
+    private Animator anim;
+   // private Rigidbody rb;
     
 
     private Vector3 destinationPosition;
     int layerMask1;
     int layerMask2;
     int layerMask3;
+    int layerMask4;
+
+    public bool moving = false;
     
 
     public bool hasRopa = false;
-    
 
-    private void Awake() 
+    private void Awake()
     {
-        rb = GetComponent<Rigidbody>();
-        
-    }
-    void Start()
-    {
-        origin.transform.position = transform.position;
-        //animator = GetComponent<Animator>();
+        anim = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
+
         layerMask1 = LayerMask.GetMask("Destinations");
         layerMask2 = LayerMask.GetMask("Object", "Hint");
         layerMask3 = LayerMask.GetMask("Consumable");
-        
-
-        Debug.Log("tiene ropa = " + hasRopa);
-
+        layerMask4 = LayerMask.GetMask("Ground");
     }
 
+    void Start()
+    {
+        origin.transform.position = transform.position;               
+    }
+//
     void Update()
-    {       
-
-        //Debug.Log(agent.isStopped);
-        //Debug.Log("destino" + agent.destination);
-        //Debug.Log("remaininDistance" + agent.remainingDistance);
+    {             
 
         cooldownDamage += Time.deltaTime;
 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
+        
         RaycastHit hit;
 
-        if (Input.GetMouseButtonDown(0))
+        
+        
+
+        if (Input.GetMouseButtonDown(0) )
         {
+            
             if (Physics.Raycast(ray, out hit, 100, layerMask1))
             {
-                agent.stoppingDistance = 0;
-                agent.destination = hit.point;                
+
+                wDetector = hit.collider.GetComponent<WaypointDetector>();
+
+                if (moving == false && wDetector.inWaypoint == false)
+                {
+                    agent.stoppingDistance = 0;
+                    agent.destination = hit.point;
+                    anim.SetTrigger("Walk");
+
+                    moving = true;
+                }
+
             }
             else if (Physics.Raycast(ray, out hit, 100, layerMask2))
             {
                 agent.stoppingDistance = 1;
-                agent.destination = hit.point;                
+                agent.destination = hit.point;
+                anim.SetTrigger("Walk");
             }
+
             else if (Physics.Raycast(ray, out hit, 100, layerMask3))
             {
                 agent.stoppingDistance = 1;
                 agent.destination = hit.point;
+                //anim.SetTrigger("Walk");
             }
             
         }
@@ -82,14 +97,11 @@ public class MovePlayer : MonoBehaviour
         if (agent.remainingDistance >= agent.stoppingDistance)
             agent.isStopped = false;
         else
-        {
+        {            
             agent.isStopped = true;
         }
-
-       
+        
     }
-
-
 
     public void TakeDamage()
     {
@@ -119,11 +131,38 @@ public class MovePlayer : MonoBehaviour
 
     void Die()
     {
-        Destroy(gameObject);
+        SceneManager.LoadScene("GameOver");
     }
     
     public bool GetKey()
     {
         return hasKey;
     }
+
+    public void PickKey()
+    {
+        hasKey = true;
+    }
+
+    public void setPuzzleNumber()
+    {
+        puzzleNumber++;
+    }
+
+    public int getPuzzleNumber()
+    {
+        return puzzleNumber;
+    }
+
+    public bool IsMoving()
+    {
+        return moving;
+    }
+    public void Arrived()
+    {
+        moving = false;
+        
+        anim.SetTrigger("Idle");
+    }
+    
 }

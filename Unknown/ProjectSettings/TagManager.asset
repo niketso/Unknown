@@ -8,6 +8,20 @@ TagManager:
   - Destination
   - Button
   - Ropa
+  - Terrain
+  - Key
+  - Container
+  - Door
+  - Corridor
+  - FireExt
+  - Lobby
+  - Radio
+  - Room
+  - Batteries
+  - Corridor2
+  - Corridor3
+  - SideRoom
+  - Walls
   layers:
   - Default
   - TransparentFX

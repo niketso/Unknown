@@ -12,12 +12,11 @@ public class ReplayButton : MonoBehaviour
     {
         var btn2 = GetComponent<Button>();
         btn2.onClick.AddListener(Replay);
-
     }
 
     public void Replay()
     {
-        SceneManager.LoadScene("Prototipo");
+        SceneManager.LoadScene("HospitalPrototipo");
     }
 
 }
