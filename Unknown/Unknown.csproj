@@ -12,18 +12,13 @@
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
-    <TargetFrameworkProfile></TargetFrameworkProfile>
+    <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
     <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2018.2.1f1</UnityVersion>
     <RootNamespace></RootNamespace>
     <LangVersion>4</LangVersion>
-  </PropertyGroup>
-  <PropertyGroup>
-    <NoConfig>true</NoConfig>
-    <NoStdLib>true</NoStdLib>
-    <AddAdditionalExplicitAssemblyReferences>false</AddAdditionalExplicitAssemblyReferences>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -46,6 +41,14 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="mscorlib" />
+    <Reference Include="System" />
+    <Reference Include="System.XML" />
+    <Reference Include="System.Core" />
+    <Reference Include="Boo.Lang" />
+    <Reference Include="UnityScript.Lang" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="Managed/UnityEngine/UnityEngine">
       <HintPath>C:\Program Files\Unity2018_2\Editor\Data\Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
@@ -309,12 +312,35 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Art\OldRadio\Alpinist\CamRotat.cs" />
+    <Compile Include="Assets\Scripts\Container.cs" />
+    <Compile Include="Assets\Scripts\Enemy.cs" />
+    <Compile Include="Assets\Scripts\Extinguisher.cs" />
+    <Compile Include="Assets\Scripts\FreezeText.cs" />
+    <Compile Include="Assets\Scripts\InteractController.cs" />
+    <Compile Include="Assets\Scripts\InterfazVidas.cs" />
+    <Compile Include="Assets\Scripts\Inventory\DraggingSlot.cs" />
+    <Compile Include="Assets\Scripts\Inventory\DropItem.cs" />
+    <Compile Include="Assets\Scripts\Inventory\Inventory.cs" />
+    <Compile Include="Assets\Scripts\Inventory\Item.cs" />
+    <Compile Include="Assets\Scripts\Inventory\ItemDefinition.cs" />
+    <Compile Include="Assets\Scripts\Inventory\PickupItem.cs" />
+    <Compile Include="Assets\Scripts\Inventory\Slot.cs" />
     <Compile Include="Assets\Scripts\MovePlayer.cs" />
+    <Compile Include="Assets\Scripts\NotesController.cs" />
+    <Compile Include="Assets\Scripts\NotesControllerContainer.cs" />
     <Compile Include="Assets\Scripts\PlayerCollision.cs" />
-    <Compile Include="Assets\Scripts\PlayerMovement.cs" />
+    <Compile Include="Assets\Scripts\PlayerPickup.cs" />
+    <Compile Include="Assets\Scripts\QuitButton.cs" />
+    <Compile Include="Assets\Scripts\Radio.cs" />
+    <Compile Include="Assets\Scripts\ReplayButton.cs" />
+    <Compile Include="Assets\Scripts\Ropa.cs" />
     <Compile Include="Assets\Scripts\TextActivator.cs" />
+    <Compile Include="Assets\Scripts\WaypointDetector.cs" />
+    <Compile Include="Assets\Scripts\WinCheck.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Art\OldRadio\Alpinist\ReadMe.txt" />
     <None Include="Packages\com.unity.package-manager-ui\Editor\Resources\Styles\Main_Dark.uss" />
     <None Include="Packages\com.unity.package-manager-ui\Editor\Resources\Styles\Main_Light.uss" />
     <None Include="Packages\com.unity.package-manager-ui\Editor\Resources\Templates\Alert.uxml" />
