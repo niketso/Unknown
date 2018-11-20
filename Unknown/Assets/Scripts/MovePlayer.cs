@@ -10,7 +10,7 @@ public class MovePlayer : MonoBehaviour
     public int vidas = 3;
     public GameObject origin;
     float cooldownDamage = 0;
-    public bool hasKey;
+    //public bool hasKey;
     public GameObject ropa;
     public int puzzleNumber = 1;
     private WaypointDetector wDetector;
@@ -134,15 +134,15 @@ public class MovePlayer : MonoBehaviour
         SceneManager.LoadScene("GameOver");
     }
     
-    public bool GetKey()
-    {
-        return hasKey;
-    }
+    //public bool GetKey()
+    //{
+    //    return hasKey;
+    //}
 
-    public void PickKey()
-    {
-        hasKey = true;
-    }
+    //public void PickKey()
+    //{
+    //    hasKey = true;
+    //}
 
     public void setPuzzleNumber()
     {

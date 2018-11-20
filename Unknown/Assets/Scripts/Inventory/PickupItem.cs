@@ -7,6 +7,8 @@ public class PickupItem : MonoBehaviour
 
     [SerializeField]
     protected ItemDefinition definition;
+    [SerializeField]
+    protected AudioClip pickUpSound;
 
     protected virtual void OnTriggerEnter(Collider collider)
     {
@@ -16,7 +18,7 @@ public class PickupItem : MonoBehaviour
             if (player != null)
             {
                 player.Inventory.AddNewItem(new Item(this.definition, 1));
-
+                player.gameObject.GetComponent<AudioSource>().PlayOneShot(pickUpSound);
                 Destroy(gameObject);
             }
         }

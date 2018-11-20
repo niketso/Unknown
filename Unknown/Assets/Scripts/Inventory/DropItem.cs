@@ -24,21 +24,26 @@ public class DropItem : MonoBehaviour, IDropHandler
                 Instantiate<GameObject>(this.inventory.DraggingSlot.CachedSlot.Item.Definition.Prefab, hit.point, Quaternion.identity);
                 this.inventory.DraggingSlot.Slot.RemoveItem();
             }*/
+            var item = this.inventory.DraggingSlot.CachedSlot.Item;
 
-            if (this.inventory.DraggingSlot.CachedSlot.Item.Definition.Prefab.tag == "FireExt" && hit.collider.CompareTag("Enemy") && this.inventory.DraggingSlot.Slot.CanRemoveItem())
+            if (item.Definition.Prefab.tag == "FireExt" && hit.collider.CompareTag("Enemy") && this.inventory.DraggingSlot.Slot.CanRemoveItem())
             {
-                Instantiate<GameObject>(this.inventory.DraggingSlot.CachedSlot.Item.Definition.Prefab, hit.point, Quaternion.identity);
-                
-                this.inventory.DraggingSlot.Slot.RemoveItem();
-                
-            }
-
-            if (this.inventory.DraggingSlot.CachedSlot.Item.Definition.Prefab.tag == "Batteries" && hit.collider.CompareTag("Radio") && this.inventory.DraggingSlot.Slot.CanRemoveItem())
-            {
-                Instantiate<GameObject>(this.inventory.DraggingSlot.CachedSlot.Item.Definition.Prefab, hit.point, Quaternion.identity);
+                Instantiate<GameObject>(item.Definition.Prefab, hit.point, Quaternion.identity);
 
                 this.inventory.DraggingSlot.Slot.RemoveItem();
+
             }
+
+            if (item.Definition.Prefab.tag == "Batteries" && hit.collider.CompareTag("Radio") && this.inventory.DraggingSlot.Slot.CanRemoveItem())
+            {
+                Instantiate<GameObject>(item.Definition.Prefab, hit.point, Quaternion.identity);
+
+                this.inventory.DraggingSlot.Slot.RemoveItem();
+            }
+            BasePuzzleBehaviour beh = hit.collider.gameObject.GetComponent<BasePuzzleBehaviour>();
+            var cachedSlot = this.inventory.DraggingSlot.CachedSlot;
+            if (beh != null)
+                beh.OnDrop(cachedSlot);
         }
     }
 

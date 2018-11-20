@@ -26,13 +26,13 @@ public class NotesControllerContainer : MonoBehaviour
         GameObject plyr = GameObject.FindGameObjectWithTag("Player");
         if (plyr)
         {
-            if (!player.GetKey())
-                ShowNoteImageClosed();
-            else if (player.GetKey())
-            {
-                Destroy(tapa);
-                ShowNoteImage();
-            }
+            //if (!player.GetKey())
+            //    ShowNoteImageClosed();
+            //else if (player.GetKey())
+            //{
+            //    Destroy(tapa);
+            //    ShowNoteImage();
+            //}
         }
     }
     

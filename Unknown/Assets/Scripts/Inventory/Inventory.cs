@@ -1,5 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,10 +19,10 @@ public class Inventory : MonoBehaviour
     protected ItemDefinition ductTape;
     [SerializeField]
     protected ItemDefinition fixedKey;
-  
+
     [SerializeField]
     protected ItemDefinition key;
-    
+
     [SerializeField]
     protected ItemDefinition extinguisher;
 
@@ -33,6 +35,20 @@ public class Inventory : MonoBehaviour
         set
         {
             this.draggingSlot = value;
+        }
+    }
+
+    internal void UseItemWithName(string prefabName)
+    {
+        var slot = slots.FirstOrDefault(s => s.Item.Definition.Prefab.name == prefabName);
+        if (slot.Item.Amount > 1)
+        {
+            slot.Item.Amount--;
+        }
+        else
+        {
+            slot.Item = null;
+            this.slots.Remove(slot);
         }
     }
 
@@ -79,6 +95,11 @@ public class Inventory : MonoBehaviour
         Item item = oldSlot.Item;
         oldSlot.Item = newSlot.Item;
         newSlot.Item = item;
+    }
+
+    public bool ContainsItemWithDefinition(string prefabName)
+    {
+        return slots.Any(slot => slot.Item.Definition.Prefab.name == prefabName);
     }
 
     /// <summary>
@@ -139,5 +160,6 @@ public class Inventory : MonoBehaviour
         }
         return slot;
     }
+
 
 }

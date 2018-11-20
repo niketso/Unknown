@@ -149,7 +149,7 @@ public class Slot : MonoBehaviour, IDragHandler, IDropHandler, IEndDragHandler
 
     public bool CanRemoveItem()
     {
-        return this.item.Amount > 0;
+        return this.item != null && this.item.Amount > 0;
     }
 
     public void RemoveItem()

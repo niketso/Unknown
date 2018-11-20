@@ -8,14 +8,14 @@ public class TextActivator : MonoBehaviour
 
     public Text actionDisplay; //Text That Will Show ToolTip
 
-    int layerMask; //Used To Filter Which Colliders Will Be Hit By Raycast
+    // int layerMask; //Used To Filter Which Colliders Will Be Hit By Raycast
 
     // Use this for initialization
     void Start()
     {
         actionDisplay.enabled = false; //Start Out Disabled
 
-        layerMask = LayerMask.GetMask("Destinations", "Hint", "Consumable", "Object","PickUp"); //Only Objects On The Character Layer Will Be Afected
+        //layerMask = LayerMask.GetMask("Destinations", "Hint", "Consumable", "Object", "PickUp"); //Only Objects On The Character Layer Will Be Afected
     }
 
     // Update is called once per frame
@@ -26,8 +26,12 @@ public class TextActivator : MonoBehaviour
         //*Notice "hit" is not initialized yet, it will be handled by the "out" keyword below
 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);//Ray Will Will Start At The Mouse Position And Travel Forward Into The Scene
-
-        if (Physics.Raycast(ray, out hit, 1000.0f, layerMask)) // Starting point, direction, distance, layer to interact with
+                                                                    //hit.collider.gameObject.layer
+        bool hitSomething = Physics.Raycast(ray, out hit, 1000.0f);
+        if (!hitSomething)
+            return;
+        int layer = hit.collider.gameObject.layer;
+        if (layer == 10 || layer >= 12) // Starting point, direction, distance, layer to interact with
         {
             ShowInfo(hit.collider.gameObject.name); //Pass Name Of Object To Method
         }
@@ -44,6 +48,6 @@ public class TextActivator : MonoBehaviour
 
         actionDisplay.text = name; //Update Text
 
-        gameObject.transform.position = Input.mousePosition; //Move Text To Mouse's Position
+        // gameObject.transform.position = Input.mousePosition; //Move Text To Mouse's Position
     }
 }
