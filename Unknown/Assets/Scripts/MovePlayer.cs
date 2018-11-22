@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System;
 
 public class MovePlayer : MonoBehaviour
 {
@@ -15,10 +16,11 @@ public class MovePlayer : MonoBehaviour
     public int puzzleNumber = 1;
     private WaypointDetector wDetector;
 
-    
+    public bool IsInteractable = false;
     private NavMeshAgent agent;
     private Animator anim;
    // private Rigidbody rb;
+   public GameObject popUpTextPrefab;
     
 
     private Vector3 destinationPosition;
@@ -90,6 +92,10 @@ public class MovePlayer : MonoBehaviour
                 agent.stoppingDistance = 1;
                 agent.destination = hit.point;
                 //anim.SetTrigger("Walk");
+            }else
+            {
+                
+                ShowPopUpText();
             }
             
         }
@@ -101,6 +107,11 @@ public class MovePlayer : MonoBehaviour
             agent.isStopped = true;
         }
         
+    }
+
+    private void ShowPopUpText()
+    {
+        Instantiate(popUpTextPrefab,transform.position,Quaternion.identity,transform);
     }
 
     public void TakeDamage()
