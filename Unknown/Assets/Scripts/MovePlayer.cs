@@ -44,11 +44,12 @@ public class MovePlayer : MonoBehaviour
     void Update()
     {
         Debug.Log("MOVING: " + moving);
+        Debug.Log("REMAINING DISTANCE = " + agent.remainingDistance);
         cooldownDamage += Time.deltaTime;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
-        if (agent.remainingDistance == 0)
+        if (agent.remainingDistance < 0.1)
             Arrived();
         else
             moving = true;
@@ -57,16 +58,18 @@ public class MovePlayer : MonoBehaviour
         {
             if (Physics.Raycast(ray, out hit, 100, layerMask1) && moving == false)
             {
-                agent.destination = hit.transform.position;
-                anim.SetTrigger("Walk");                
+                anim.SetBool("Moving", true);
+                anim.SetTrigger("Walk");
+                agent.destination = hit.transform.position;                           
                 agent.stoppingDistance = 0;                
             }
 
             if (Physics.Raycast(ray, out hit, 100, layerMask2) && moving == false)
             {
-                agent.destination = hit.transform.position;
-                anim.SetTrigger("Walk");              
-                agent.stoppingDistance = 1;
+                anim.SetBool("Moving", true);
+                anim.SetTrigger("Walk");
+                agent.destination = hit.transform.position;                          
+                agent.stoppingDistance = 0;
             }
         }
     }  
@@ -114,7 +117,9 @@ public class MovePlayer : MonoBehaviour
 
     public void Arrived()
     {
-        moving = false;        
+        Debug.Log("ARRIVEDfunc");
+        moving = false;
+        anim.SetBool("Moving", false);
         anim.SetTrigger("Idle");
     }
     

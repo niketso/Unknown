@@ -3,17 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class WaypointDetector : MonoBehaviour {
-
-    private MovePlayer plyr;
+       
     public bool inWaypoint = false;
     
     private void OnTriggerEnter(Collider other)
     {
 
         if (other.tag == "Player" )
-        {
-            plyr = other.GetComponent<MovePlayer>();
-            plyr.Arrived();
+        {                    
             inWaypoint = true;
             Debug.Log("entro");
         }

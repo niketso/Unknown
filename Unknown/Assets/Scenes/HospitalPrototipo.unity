@@ -437,7 +437,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4449751479182270, guid: f0ce7ec52e6624d45a69dec712c9b776, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 10.311
+      value: 9.909
       objectReference: {fileID: 0}
     - target: {fileID: 4449751479182270, guid: f0ce7ec52e6624d45a69dec712c9b776, type: 2}
       propertyPath: m_LocalPosition.y
@@ -445,7 +445,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4449751479182270, guid: f0ce7ec52e6624d45a69dec712c9b776, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 20.173
+      value: 20.975
       objectReference: {fileID: 0}
     - target: {fileID: 4449751479182270, guid: f0ce7ec52e6624d45a69dec712c9b776, type: 2}
       propertyPath: m_LocalRotation.x
@@ -476,6 +476,26 @@ Prefab:
         type: 2}
       propertyPath: m_Constraints
       value: 126
+      objectReference: {fileID: 0}
+    - target: {fileID: 65174079725163118, guid: f0ce7ec52e6624d45a69dec712c9b776,
+        type: 2}
+      propertyPath: m_Size.y
+      value: 1.7435907
+      objectReference: {fileID: 0}
+    - target: {fileID: 65174079725163118, guid: f0ce7ec52e6624d45a69dec712c9b776,
+        type: 2}
+      propertyPath: m_Center.y
+      value: 0.8538299
+      objectReference: {fileID: 0}
+    - target: {fileID: 195045411523291224, guid: f0ce7ec52e6624d45a69dec712c9b776,
+        type: 2}
+      propertyPath: m_Height
+      value: 1.73
+      objectReference: {fileID: 0}
+    - target: {fileID: 195045411523291224, guid: f0ce7ec52e6624d45a69dec712c9b776,
+        type: 2}
+      propertyPath: m_BaseOffset
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f0ce7ec52e6624d45a69dec712c9b776, type: 2}
@@ -38888,7 +38908,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 150, y: -33.15}
+  m_AnchoredPosition: {x: 457.16666, y: -33.15}
   m_SizeDelta: {x: 100, y: 66.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &876503048
@@ -48616,9 +48636,6 @@ MonoBehaviour:
   sound: {fileID: 1332424492}
   hurtSound: {fileID: 8300000, guid: fdabd6a6986413c4a989dc19af41232c, type: 3}
   radioSound: {fileID: 8300000, guid: 142ecb049414e8543bd744cade177cb9, type: 3}
-  goToCorridor: {fileID: 1065070085}
-  goToLobby: {fileID: 962749741}
-  escapeHospital: {fileID: 490842904}
 --- !u!82 &1332424492
 AudioSource:
   m_ObjectHideFlags: 0
@@ -70831,7 +70848,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 250, y: -33.15}
+  m_AnchoredPosition: {x: 864.3333, y: -33.15}
   m_SizeDelta: {x: 100, y: 66.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1849571148
@@ -76241,22 +76258,22 @@ Prefab:
     - target: {fileID: 65520942832850316, guid: 86dc165bf21bb924885a63d577c6bc63,
         type: 2}
       propertyPath: m_Size.z
-      value: 2.0487723
+      value: 0.8017461
       objectReference: {fileID: 0}
     - target: {fileID: 65520942832850316, guid: 86dc165bf21bb924885a63d577c6bc63,
         type: 2}
       propertyPath: m_Center.z
-      value: -0.52438587
+      value: 0.09912773
       objectReference: {fileID: 0}
     - target: {fileID: 65520942832850316, guid: 86dc165bf21bb924885a63d577c6bc63,
         type: 2}
       propertyPath: m_Size.x
-      value: 1.8783892
+      value: 1.0307771
       objectReference: {fileID: 0}
     - target: {fileID: 65520942832850316, guid: 86dc165bf21bb924885a63d577c6bc63,
         type: 2}
       propertyPath: m_Center.x
-      value: 0.43919414
+      value: 0.015387602
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86dc165bf21bb924885a63d577c6bc63, type: 2}

@@ -22,12 +22,12 @@ public class PlayerCollision : MonoBehaviour
     private AudioClip radioSound;
 
     
-    [SerializeField]
-    private GameObject goToCorridor;
-    [SerializeField]
-    private GameObject goToLobby;
-    [SerializeField]
-    private GameObject escapeHospital;
+    //[SerializeField]
+    //private GameObject goToCorridor;
+    //[SerializeField]
+    //private GameObject goToLobby;
+    //[SerializeField]
+    //private GameObject escapeHospital;
 
     private void OnCollisionEnter(Collision collisionInfo)
     {
@@ -85,7 +85,7 @@ public class PlayerCollision : MonoBehaviour
             //    goToRoom.SetActive(true);
             //}
             //other.gameObject.SetActive(false);
-            goToCorridor.transform.position = new Vector3(goToCorridor.transform.position.x, goToCorridor.transform.position.y - 10, goToCorridor.transform.position.z);
+            //goToCorridor.transform.position = new Vector3(goToCorridor.transform.position.x, goToCorridor.transform.position.y - 10, goToCorridor.transform.position.z);
         }
 
         if (other.tag == "Corridor2")
@@ -114,7 +114,7 @@ public class PlayerCollision : MonoBehaviour
             //corridor.SetActive(false);
             //room.SetActive(true);
             //goToCorridor.SetActive(true);
-            goToCorridor.transform.position = new Vector3(goToCorridor.transform.position.x, goToCorridor.transform.position.y + 10, goToCorridor.transform.position.z);
+            //goToCorridor.transform.position = new Vector3(goToCorridor.transform.position.x, goToCorridor.transform.position.y + 10, goToCorridor.transform.position.z);
             //goToRoom.transform.position = new Vector3(goToRoom.transform.position.x, goToRoom.transform.position.y - 10, goToRoom.transform.position.z);
             // goToRoom.SetActive(false);
         }
@@ -135,7 +135,7 @@ public class PlayerCollision : MonoBehaviour
         if (other.tag == "Radio")
         {
             //sound.PlayOneShot(radioSound, 0.5f);
-            escapeHospital.SetActive(true);
+            //escapeHospital.SetActive(true);
         }
 
         if (other.tag == "Batteries")
