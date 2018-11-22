@@ -51,13 +51,13 @@ public class PlayerCollision : MonoBehaviour
         //    Destroy(tapa);
         //}
 
-        if (other.tag == "Key")
+        /*if (other.tag == "Key")
         {
             //func.PickKey();
             //other.gameObject.SetActive(false);
             //other.transform.position = new Vector3(other.transform.position.x, goToRoom.transform.position.y - 10, goToRoom.transform.position.z);
             //Destroy(key);
-        }
+        }*/
 
         //if(other.tag == "Door" && func.GetKey()) //cambiar y poner llave como item para arrastrar a la puerta, crear script de puertas
         //{
@@ -103,8 +103,8 @@ public class PlayerCollision : MonoBehaviour
 
         if (other.tag == "SideRoom")
         {
-            cam1.transform.localPosition = new Vector3(17.90154f, 31.04953f, -2.218891f);
-            cam1.transform.localRotation = Quaternion.Euler(24.272f, 143.009f, 0f);
+            cam1.transform.localPosition = new Vector3(26.60147f, 30.50752f, -2.183575f);
+            cam1.transform.localRotation = Quaternion.Euler(16.71f, -141.944f, 0f);
         }
 
         if (other.tag == "Room")
@@ -119,22 +119,22 @@ public class PlayerCollision : MonoBehaviour
             // goToRoom.SetActive(false);
         }
 
-        if (other.tag == "FireExt")
+        /*if (other.tag == "FireExt")
         {
             //sound.PlayOneShot(pickUpSound);
-        }
+        }*/
 
         if (other.tag == "Lobby")
         {
-            cam1.transform.localPosition = new Vector3(42.5119f, 31.492f, -14.42264f);
-            cam1.transform.localRotation = Quaternion.Euler(19.116f, -135.103f, 0f);
+            cam1.transform.localPosition = new Vector3(40.34329f, 30.14942f, -14.11259f);
+            cam1.transform.localRotation = Quaternion.Euler(19.117f, -137.646f, 0f);
             //lobby.SetActive(true);
             //corridor.SetActive(false);
         }
 
         if (other.tag == "Radio")
         {
-            sound.PlayOneShot(radioSound, 0.5f);
+            //sound.PlayOneShot(radioSound, 0.5f);
             escapeHospital.SetActive(true);
         }
 
