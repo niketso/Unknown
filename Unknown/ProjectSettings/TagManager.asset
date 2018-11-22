@@ -22,6 +22,8 @@ TagManager:
   - Corridor3
   - SideRoom
   - Walls
+  - Axe
+  - Fire
   layers:
   - Default
   - TransparentFX

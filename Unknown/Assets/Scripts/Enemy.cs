@@ -33,7 +33,7 @@ public class Enemy : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "FireExt")
+        if(other.gameObject.tag == "Axe")
         {
             StartCoroutine(playSound());
             Destroy(other.gameObject);
