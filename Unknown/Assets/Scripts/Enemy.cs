@@ -9,14 +9,14 @@ public class Enemy : MonoBehaviour {
     [SerializeField] AudioClip impactClip;
     [SerializeField] Animator die;
     
-
+    
     private NavMeshAgent agent;
 
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
     }    
-
+    
     public void DistractZombie()
     {
         agent.destination = radio.transform.position;

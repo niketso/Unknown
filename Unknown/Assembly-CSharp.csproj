@@ -118,6 +118,7 @@
     <Compile Include="Assets\Scripts\Enemy.cs" />
     <Compile Include="Assets\Scripts\EventManager.cs" />
     <Compile Include="Assets\Scripts\Extinguisher.cs" />
+    <Compile Include="Assets\Scripts\Fire.cs" />
     <Compile Include="Assets\Scripts\FreezeText.cs" />
     <Compile Include="Assets\Scripts\InteractController.cs" />
     <Compile Include="Assets\Scripts\InterfazVidas.cs" />

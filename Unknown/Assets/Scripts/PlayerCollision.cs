@@ -132,7 +132,7 @@ public class PlayerCollision : MonoBehaviour
             //corridor.SetActive(false);
         }
 
-        if (other.tag == "Radio")
+        /*if (other.tag == "Radio")
         {
             //sound.PlayOneShot(radioSound, 0.5f);
             //escapeHospital.SetActive(true);
