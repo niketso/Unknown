@@ -28,6 +28,7 @@ public class Radio : MonoBehaviour {
         {
             plyr = true;
             Destroy(other.gameObject);
+
         }
     }
 

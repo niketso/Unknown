@@ -39,9 +39,9 @@ GameObject:
   - component: {fileID: 4150634651932996}
   - component: {fileID: 33618773054127286}
   - component: {fileID: 23352172196427396}
+  - component: {fileID: 64099490417869990}
   - component: {fileID: 95311170939732278}
   - component: {fileID: 114581647080122058}
-  - component: {fileID: 65672602618277554}
   m_Layer: 0
   m_Name: Extintor
   m_TagString: FireExt
@@ -56,8 +56,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1916588416952894}
   m_LocalRotation: {x: 0.3265057, y: 0.62721133, z: 0.62721133, w: -0.3265057}
-  m_LocalPosition: {x: -7.4497423, y: 0.08069992, z: -16.020418}
-  m_LocalScale: {x: 0.004547507, y: 0.005599044, z: 0.004067858}
+  m_LocalPosition: {x: -26.144, y: 0.08070004, z: 2.4571052}
+  m_LocalScale: {x: 0.004174817, y: 0.005140177, z: 0.004067858}
   m_Children:
   - {fileID: 4835254989039122}
   m_Father: {fileID: 0}
@@ -174,8 +174,8 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300006, guid: 2cf3d8721078b4a4db4a4f7941a94633, type: 3}
---- !u!65 &65672602618277554
-BoxCollider:
+--- !u!64 &64099490417869990
+MeshCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -183,9 +183,11 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 92.34795, y: 97.058235, z: 273.09805}
-  m_Center: {x: 10.873706, y: -29.824318, z: 99.370415}
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: 2cf3d8721078b4a4db4a4f7941a94633, type: 3}
 --- !u!95 &95311170939732278
 Animator:
   serializedVersion: 3
@@ -216,4 +218,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   definition: {fileID: 11400000, guid: 612cb2ba2cd5e4e4a9bac7ab4cfbfa99, type: 2}
-  pickUpSound: {fileID: 8300000, guid: 74b978617a51af2429f4e77fb3c2514d, type: 3}
