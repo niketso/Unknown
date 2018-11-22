@@ -10,20 +10,14 @@ public class MovePlayer : MonoBehaviour
 {
     public int vidas = 3;
     public GameObject origin;
-    float cooldownDamage = 0;
-    //public bool hasKey;
-    public GameObject ropa;
+    float cooldownDamage = 0;   
     public int puzzleNumber = 1;
     private WaypointDetector wDetector;
-
     public bool IsInteractable = false;
     private NavMeshAgent agent;
-    private Animator anim;
-   // private Rigidbody rb;
-   public GameObject popUpTextPrefab;
-    
-
+    private Animator anim;    
     private Vector3 destinationPosition;
+
     int layerMask1;
     int layerMask2;
     int layerMask3;
@@ -31,9 +25,6 @@ public class MovePlayer : MonoBehaviour
 
     public bool moving = false;
     
-
-    public bool hasRopa = false;
-
     private void Awake()
     {
         anim = GetComponent<Animator>();
@@ -51,68 +42,34 @@ public class MovePlayer : MonoBehaviour
     }
 //
     void Update()
-    {             
-
+    {
+        Debug.Log("MOVING: " + moving);
         cooldownDamage += Time.deltaTime;
-
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        
         RaycastHit hit;
 
-        
-        
-
-        if (Input.GetMouseButtonDown(0) )
-        {
-            
-            if (Physics.Raycast(ray, out hit, 100, layerMask1))
-            {
-
-                wDetector = hit.collider.GetComponent<WaypointDetector>();
-
-                if (moving == false && wDetector.inWaypoint == false)
-                {
-                    agent.stoppingDistance = 0;
-                    agent.destination = hit.point;
-                    anim.SetTrigger("Walk");
-
-                    moving = true;
-                }
-
-            }
-            else if (Physics.Raycast(ray, out hit, 100, layerMask2))
-            {
-                agent.stoppingDistance = 1;
-                agent.destination = hit.point;
-                anim.SetTrigger("Walk");
-            }
-
-            else if (Physics.Raycast(ray, out hit, 100, layerMask3))
-            {
-                agent.stoppingDistance = 1;
-                agent.destination = hit.point;
-                //anim.SetTrigger("Walk");
-            }else
-            {
-                
-                ShowPopUpText();
-            }
-            
-        }
-
-        if (agent.remainingDistance >= agent.stoppingDistance)
-            agent.isStopped = false;
+        if (agent.remainingDistance == 0)
+            Arrived();
         else
-        {            
-            agent.isStopped = true;
-        }
-        
-    }
+            moving = true;
 
-    private void ShowPopUpText()
-    {
-        Instantiate(popUpTextPrefab,transform.position,Quaternion.identity,transform);
-    }
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (Physics.Raycast(ray, out hit, 100, layerMask1) && moving == false)
+            {
+                agent.destination = hit.transform.position;
+                anim.SetTrigger("Walk");                
+                agent.stoppingDistance = 0;                
+            }
+
+            if (Physics.Raycast(ray, out hit, 100, layerMask2) && moving == false)
+            {
+                agent.destination = hit.transform.position;
+                anim.SetTrigger("Walk");              
+                agent.stoppingDistance = 1;
+            }
+        }
+    }  
 
     public void TakeDamage()
     {
@@ -144,16 +101,6 @@ public class MovePlayer : MonoBehaviour
     {
         SceneManager.LoadScene("GameOver");
     }
-    
-    //public bool GetKey()
-    //{
-    //    return hasKey;
-    //}
-
-    //public void PickKey()
-    //{
-    //    hasKey = true;
-    //}
 
     public void setPuzzleNumber()
     {
@@ -165,14 +112,9 @@ public class MovePlayer : MonoBehaviour
         return puzzleNumber;
     }
 
-    public bool IsMoving()
-    {
-        return moving;
-    }
     public void Arrived()
     {
-        moving = false;
-        
+        moving = false;        
         anim.SetTrigger("Idle");
     }
     
