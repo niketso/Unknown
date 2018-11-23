@@ -19,17 +19,13 @@ public class DropItem : MonoBehaviour, IDropHandler
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit))
         {
-            /*if (hit.collider.CompareTag("Terrain") && this.inventory.DraggingSlot.Slot.CanRemoveItem())
-            {
-                Instantiate<GameObject>(this.inventory.DraggingSlot.CachedSlot.Item.Definition.Prefab, hit.point, Quaternion.identity);
-                this.inventory.DraggingSlot.Slot.RemoveItem();
-            }*/
+           
             var item = this.inventory.DraggingSlot.CachedSlot.Item;
 
             if (item.Definition.Prefab.tag == "FireExt" && hit.collider.CompareTag("Fire") && this.inventory.DraggingSlot.Slot.CanRemoveItem())
             {
-                Instantiate<GameObject>(item.Definition.Prefab, hit.point, Quaternion.identity);
-
+                //Instantiate<GameObject>(item.Definition.Prefab, hit.point, Quaternion.identity);
+                StartCoroutine(hit.transform.GetComponent<Fire>().playSound());
                 this.inventory.DraggingSlot.Slot.RemoveItem();
 
             }
@@ -37,7 +33,6 @@ public class DropItem : MonoBehaviour, IDropHandler
             if (item.Definition.Prefab.tag == "Axe" && hit.collider.CompareTag("Enemy") && this.inventory.DraggingSlot.Slot.CanRemoveItem())
             {
                 Instantiate<GameObject>(item.Definition.Prefab, hit.point, Quaternion.identity);
-
                 this.inventory.DraggingSlot.Slot.RemoveItem();
 
             }
@@ -45,9 +40,9 @@ public class DropItem : MonoBehaviour, IDropHandler
             if (item.Definition.Prefab.tag == "Batteries" && hit.collider.CompareTag("Radio") && this.inventory.DraggingSlot.Slot.CanRemoveItem())
             {
                 Instantiate<GameObject>(item.Definition.Prefab, hit.point, Quaternion.identity);
-
                 this.inventory.DraggingSlot.Slot.RemoveItem();
             }
+
             BasePuzzleBehaviour beh = hit.collider.gameObject.GetComponent<BasePuzzleBehaviour>();
             var cachedSlot = this.inventory.DraggingSlot.CachedSlot;
             if (beh != null)

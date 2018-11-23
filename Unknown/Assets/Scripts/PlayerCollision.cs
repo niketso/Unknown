@@ -134,7 +134,7 @@ public class PlayerCollision : MonoBehaviour
 
         if (other.tag == "Radio")
         {
-            //sound.PlayOneShot(radioSound, 0.5f);
+            sound.PlayOneShot(radioSound, 0.5f);
             //escapeHospital.SetActive(true);
         }
 

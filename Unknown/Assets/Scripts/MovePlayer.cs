@@ -43,8 +43,8 @@ public class MovePlayer : MonoBehaviour
 //
     void Update()
     {
-        Debug.Log("MOVING: " + moving);
-        Debug.Log("REMAINING DISTANCE = " + agent.remainingDistance);
+        //Debug.Log("MOVING: " + moving);
+        //Debug.Log("REMAINING DISTANCE = " + agent.remainingDistance);
         cooldownDamage += Time.deltaTime;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;

@@ -2,43 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Fire : MonoBehaviour {
-
-    //[SerializeField] GameObject radio;
+public class Fire : MonoBehaviour
+{
+    
     [SerializeField] AudioSource impact;
     [SerializeField] AudioClip impactClip;
-    [SerializeField] GameObject escapeHospital;
-    // [SerializeField] Animator die;
+    [SerializeField] GameObject escapeHospital;    
 
-
-    // private NavMeshAgent agent;
-
-    /*private void Awake()
+    public IEnumerator playSound()
     {
-    agent = GetComponent<NavMeshAgent>();
-    }*/
-
-    /* public void DistractZombie()
-     {
-         agent.destination = radio.transform.position;
-     }*/
-
-    IEnumerator playSound()
-    {
+        Debug.Log("PLAY SOUND func");
         impact.PlayOneShot(impactClip);
-        // die.Play("fallingback");
+        
         escapeHospital.SetActive(true);
         yield return new WaitForSeconds(1f);
 
         Destroy(this.gameObject);
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "FireExt")
-        {
-            StartCoroutine(playSound());
-            Destroy(other.gameObject);
-        }
-    }
+    }    
 }
