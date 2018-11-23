@@ -22,6 +22,9 @@ public class MovePlayer : MonoBehaviour
     int layerMask2;
     int layerMask3;
     int layerMask4;
+    int layerMask5;
+    //int layerMask6;
+    //int layerMask7;
 
     public bool moving = false;
 
@@ -36,6 +39,11 @@ public class MovePlayer : MonoBehaviour
         layerMask2 = LayerMask.GetMask("Object", "Hint");
         layerMask3 = LayerMask.GetMask("UI");
         layerMask4 = LayerMask.GetMask("Ground");
+        layerMask5 = ~((1 << 5) | (1 << 10) | (1 << 15));
+        //layerMask6 = ~(1 << 10);
+        //layerMask7 = ~(1 << 15);
+
+
     }
 
     void Start()
@@ -47,6 +55,7 @@ public class MovePlayer : MonoBehaviour
     {
         //Debug.Log("MOVING: " + moving);
         //Debug.Log("REMAINING DISTANCE = " + agent.remainingDistance);
+        
         cooldownDamage += Time.deltaTime;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
@@ -60,6 +69,7 @@ public class MovePlayer : MonoBehaviour
         {
             if (Physics.Raycast(ray, out hit, 100, layerMask1) && moving == false)
             {
+                Debug.Log("LAYER DEL HIT 1 = " + hit.transform.gameObject.layer);
                 if (hit.transform.tag == ("Door") && hit.transform.gameObject.GetComponent<DoorBehaviour>().isUnlocked == false)
                 {
                     Debug.Log("PUERTA CERRADA");
@@ -85,16 +95,17 @@ public class MovePlayer : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit, 100, layerMask2) && moving == false)
             {
+                Debug.Log("LAYER DEL HIT 2 = " + hit.transform.gameObject.layer);
                 anim.SetBool("Moving", true);
                 anim.SetTrigger("Walk");
                 agent.destination = hit.transform.position;                          
                 agent.stoppingDistance = 0;
             }
-            if (Physics.Raycast(ray, out hit, 100, ~(1<<5))
-            ||Physics.Raycast(ray, out hit, 100, ~(1<<10))
-            ||Physics.Raycast(ray, out hit, 100, ~(1<<15))
-            && moving == false)
+            if (!Physics.Raycast(ray, out hit, 100, layerMask1) &&
+                !Physics.Raycast(ray, out hit, 100, layerMask2) &&
+                Physics.Raycast(ray, out hit, 100, layerMask5) && moving == false)
             {
+                Debug.Log("LAYER DEL HIT 3 = " + hit.transform.gameObject.layer);
                 popUpText.GetComponent<PopUp>().activatePopUp = true;
             }
         }
