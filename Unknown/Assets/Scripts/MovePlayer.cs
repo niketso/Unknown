@@ -58,10 +58,20 @@ public class MovePlayer : MonoBehaviour
         {
             if (Physics.Raycast(ray, out hit, 100, layerMask1) && moving == false)
             {
-                anim.SetBool("Moving", true);
-                anim.SetTrigger("Walk");
-                agent.destination = hit.transform.position;                           
-                agent.stoppingDistance = 0;                
+                if (hit.transform.tag == ("Door") && hit.transform.gameObject.GetComponent<DoorBehaviour>().isUnlocked == false)
+                {
+                    Debug.Log("PUERTA CERRADA");
+                    moving = false;
+                    anim.SetBool("Moving", false);
+                    anim.SetTrigger("Idle");
+                }
+                else
+                {
+                    anim.SetBool("Moving", true);
+                    anim.SetTrigger("Walk");
+                    agent.destination = hit.transform.position;
+                    agent.stoppingDistance = 0;
+                }
             }
 
             if (Physics.Raycast(ray, out hit, 100, layerMask2) && moving == false)
