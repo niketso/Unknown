@@ -26,6 +26,7 @@ TagManager:
   - Fire
   - WaitingRoom
   - Arrow
+  - Corner
   layers:
   - Default
   - TransparentFX

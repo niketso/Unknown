@@ -151,9 +151,18 @@ public class PlayerCollision : MonoBehaviour
 
         if (other.tag == "Lobby")
         {
-            cam1.transform.localPosition = new Vector3(40.34329f, 30.14942f, -14.11259f);
-            cam1.transform.localRotation = Quaternion.Euler(19.117f, -137.646f, 0f);
+            cam1.transform.localPosition = new Vector3(40.433f, 30.139f, -14.233f);
+            cam1.transform.localRotation = Quaternion.Euler(18.701f, -125.226f, 0f);
             arrow1.SetActive(false);
+            //lobby.SetActive(true);
+            //corridor.SetActive(false);
+        }
+
+        if (other.tag == "Corner")
+        {
+            cam1.transform.localPosition = new Vector3(25.593f, 31.42826f, -14.249f);
+            cam1.transform.localRotation = Quaternion.Euler(25.99f, -115.577f, 0f);
+            //arrow1.SetActive(false);
             //lobby.SetActive(true);
             //corridor.SetActive(false);
         }
