@@ -13,7 +13,7 @@ public class MovePlayer : MonoBehaviour
     float cooldownDamage = 0;   
     public int puzzleNumber = 1;
     private WaypointDetector wDetector;
-    public bool IsInteractable = false;
+    //public bool IsInteractable = false;
     private NavMeshAgent agent;
     private Animator anim;    
     private Vector3 destinationPosition;
@@ -24,6 +24,8 @@ public class MovePlayer : MonoBehaviour
     int layerMask4;
 
     public bool moving = false;
+
+    public Image popUpText;
     
     private void Awake()
     {
@@ -80,6 +82,12 @@ public class MovePlayer : MonoBehaviour
                 anim.SetTrigger("Walk");
                 agent.destination = hit.transform.position;                          
                 agent.stoppingDistance = 0;
+            }
+            if (Physics.Raycast(ray, out hit, 100, ~layerMask1)
+            ||Physics.Raycast(ray, out hit, 100, ~layerMask2)
+            && moving == true)
+            {
+                popUpText.GetComponent<PopUp>().activatePopUp = true;
             }
         }
     }  
