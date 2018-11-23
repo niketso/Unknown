@@ -34,7 +34,7 @@ public class MovePlayer : MonoBehaviour
 
         layerMask1 = LayerMask.GetMask("Destinations");
         layerMask2 = LayerMask.GetMask("Object", "Hint");
-        layerMask3 = LayerMask.GetMask("Consumable");
+        layerMask3 = LayerMask.GetMask("UI");
         layerMask4 = LayerMask.GetMask("Ground");
     }
 
@@ -85,6 +85,7 @@ public class MovePlayer : MonoBehaviour
             }
             if (Physics.Raycast(ray, out hit, 100, ~layerMask1)
             ||Physics.Raycast(ray, out hit, 100, ~layerMask2)
+            ||Physics.Raycast(ray, out hit, 100, ~layerMask3)
             && moving == true)
             {
                 popUpText.GetComponent<PopUp>().activatePopUp = true;

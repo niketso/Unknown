@@ -40460,7 +40460,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -58.5, y: 203}
+  m_AnchoredPosition: {x: 176.8, y: 152.7}
   m_SizeDelta: {x: 189.89966, y: 100}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1417551748
@@ -40942,8 +40942,9 @@ GameObject:
   - component: {fileID: 1465123729}
   - component: {fileID: 1465123728}
   - component: {fileID: 1465123727}
+  - component: {fileID: 1465123730}
   m_Layer: 5
-  m_Name: Button
+  m_Name: InventoryButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40963,10 +40964,10 @@ RectTransform:
   m_Father: {fileID: 904351614}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.762, y: 0.215}
-  m_AnchorMax: {x: 0.762, y: 0.215}
-  m_AnchoredPosition: {x: 465, y: 27.882}
-  m_SizeDelta: {x: 127.1, y: 53.565}
+  m_AnchorMin: {x: 0.8, y: 0.14822222}
+  m_AnchorMax: {x: 0.87900007, y: 0.21111113}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1465123727
 MonoBehaviour:
@@ -41006,18 +41007,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1465123728}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1440034259}
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1465123728
@@ -41054,6 +41044,18 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1465123725}
   m_CullTransparentMesh: 0
+--- !u!114 &1465123730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1465123725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6211f1cceafb67446998236b5004bd39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventory: {fileID: 1440034259}
 --- !u!1001 &1466654156
 Prefab:
   m_ObjectHideFlags: 0
@@ -59128,8 +59130,8 @@ RectTransform:
   m_Father: {fileID: 1465123726}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.02640718, y: 0.073616035}
+  m_AnchorMax: {x: 0.96040726, y: 0.9558304}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -59154,18 +59156,20 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_FontSize: 200
     m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 40
+    m_BestFit: 1
+    m_MinSize: 2
+    m_MaxSize: 200
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: 'Show/Hide
+
+    Inventory'
 --- !u!222 &2038740526
 CanvasRenderer:
   m_ObjectHideFlags: 0
