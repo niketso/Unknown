@@ -112,6 +112,7 @@
     <Compile Include="Assets\Art\Materials\KriptoFX\Realistic Effects Pack v4\Scripts\RFX4_UVAnimation.cs" />
     <Compile Include="Assets\Art\Materials\KriptoFX\Realistic Effects Pack v4\Scripts\RFX4_UVScroll.cs" />
     <Compile Include="Assets\Art\OldRadio\Alpinist\CamRotat.cs" />
+    <Compile Include="Assets\ClosePanelButton.cs" />
     <Compile Include="Assets\Scripts\BasePuzzleBehaviour.cs" />
     <Compile Include="Assets\Scripts\Container.cs" />
     <Compile Include="Assets\Scripts\DoorBehaviour.cs" />
