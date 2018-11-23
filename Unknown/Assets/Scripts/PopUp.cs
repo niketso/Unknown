@@ -8,8 +8,7 @@ public class PopUp : MonoBehaviour {
 	public bool activatePopUp = false;
 
 	private void Awake()
-	{
-        this.gameObject.SetActive(false);
+    {        
 		this.GetComponent<Image>().enabled = false;
 		this.GetComponentInChildren<Text>().enabled = false;
 	}

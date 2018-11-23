@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class ClosePanelButton : MonoBehaviour {
 
     GameObject panel;
-    GameObject popUpPanel;
+    public GameObject popUpPanel;
     GameObject cube;
     
 

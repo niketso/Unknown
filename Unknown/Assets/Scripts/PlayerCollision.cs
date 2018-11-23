@@ -38,8 +38,8 @@ public class PlayerCollision : MonoBehaviour
 
     private void Update()
     {
-        if(arrow1)
-        Debug.Log("ARROW" + arrow1.name);
+        //if(arrow1)
+        //Debug.Log("ARROW" + arrow1.name);
     }
 
     private void OnCollisionEnter(Collision collisionInfo)

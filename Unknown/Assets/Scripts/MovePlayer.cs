@@ -25,7 +25,7 @@ public class MovePlayer : MonoBehaviour
     int layerMask5;
     int layerMask6;
     //int layerMask6;
-    //int layerMask7;
+    int layerMask7;
 
     public bool moving = false;
 
@@ -40,10 +40,9 @@ public class MovePlayer : MonoBehaviour
         layerMask2 = LayerMask.GetMask("Object", "Hint");
         layerMask3 = LayerMask.GetMask("UI");
         layerMask4 = LayerMask.GetMask("Ground");
-        layerMask5 = ((1 << 5) | (1 << 10) | (1 << 15) | (1<<17));
-        layerMask6 = ~(1 << 17);
-        
-        //layerMask7 = ~(1 << 15);
+        layerMask5 = ((1 << 10) | (1 << 15));
+        layerMask6 = (1 << 11);
+        layerMask7 = (1 << 17);
 
 
     }
@@ -69,8 +68,8 @@ public class MovePlayer : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            if (Physics.Raycast(ray, out hit, 100, layerMask6) && 
-                Physics.Raycast(ray, out hit, 100, layerMask1) && moving == false)
+            if (Physics.Raycast(ray, out hit, 100, layerMask5)&&
+                moving == false)
             {
                 Debug.Log("LAYER DEL HIT 1 = " + hit.transform.gameObject.layer);
                 if (hit.transform.tag == ("Door") && hit.transform.gameObject.GetComponent<DoorBehaviour>().isUnlocked == false)
@@ -96,17 +95,17 @@ public class MovePlayer : MonoBehaviour
                 }
             }
 
-            if (Physics.Raycast(ray, out hit, 100, layerMask6) && 
-                Physics.Raycast(ray, out hit, 100, layerMask2) && moving == false)
+            if (Physics.Raycast(ray, out hit, 100, layerMask5) && moving == false)
             {
                 Debug.Log("LAYER DEL HIT 2 = " + hit.transform.gameObject.layer);
                 anim.SetBool("Moving", true);
                 anim.SetTrigger("Walk");
-                agent.destination = hit.transform.position;                          
+                agent.destination = hit.transform.position;
                 agent.stoppingDistance = 0;
             }
-            if (!Physics.Raycast(ray, out hit, 100, layerMask5) &&
-                Physics.Raycast(ray, out hit, 100, layerMask4)
+            if (!Physics.Raycast(ray, out hit, 100, layerMask7) &&
+                !Physics.Raycast(ray, out hit, 100, layerMask5) &&
+                Physics.Raycast(ray, out hit, 100, layerMask6)
                 && moving == false)
             {
                 Debug.Log("LAYER DEL HIT 3 = " + hit.transform.gameObject.layer);
@@ -158,7 +157,7 @@ public class MovePlayer : MonoBehaviour
 
     public void Arrived()
     {
-        Debug.Log("ARRIVEDfunc");
+        //Debug.Log("ARRIVEDfunc");
         moving = false;
         anim.SetBool("Moving", false);
         anim.SetTrigger("Idle");
