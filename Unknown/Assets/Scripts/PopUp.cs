@@ -37,14 +37,14 @@ public class PopUp : MonoBehaviour {
 		this.GetComponentInChildren<Text>().enabled = false;
 			popUpTimer.Reset();
 			activatePopUp = false;
-			Debug.Log("deactivated");
+			//Debug.Log("deactivated");
             
         }
         else if(popUpTimer.IsRunning)
         { 
 		    this.GetComponent<Image>().enabled = true;
 		this.GetComponentInChildren<Text>().enabled = true;
-			Debug.Log("activated");           
+			//Debug.Log("activated");           
         }
 	}
 

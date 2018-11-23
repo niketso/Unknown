@@ -25,6 +25,7 @@ TagManager:
   - Axe
   - Fire
   - WaitingRoom
+  - Arrow
   layers:
   - Default
   - TransparentFX

@@ -34,7 +34,7 @@ public class DraggingSlot : MonoBehaviour
             if (this.slot != null && this.slot.Item != null)
             {
                 this.image.color = Color.white;
-                Debug.Log(this.slot.Item.Definition);
+                //Debug.Log(this.slot.Item.Definition);
                 this.image.sprite = this.slot.Item.Definition.Icon;
             }
             else

@@ -67,6 +67,13 @@ public class MovePlayer : MonoBehaviour
                     anim.SetBool("Moving", false);
                     anim.SetTrigger("Idle");
                 }
+                else if (hit.transform.tag == ("Arrow"))
+                {
+                    anim.SetBool("Moving", true);
+                    anim.SetTrigger("Walk");
+                    agent.destination = hit.transform.GetComponent<Arrow>().arrowDestination.transform.position;
+                    agent.stoppingDistance = 0;
+                }
                 else
                 {
                     anim.SetBool("Moving", true);
@@ -83,10 +90,10 @@ public class MovePlayer : MonoBehaviour
                 agent.destination = hit.transform.position;                          
                 agent.stoppingDistance = 0;
             }
-            if (Physics.Raycast(ray, out hit, 100, ~layerMask1)
-            ||Physics.Raycast(ray, out hit, 100, ~layerMask2)
-            ||Physics.Raycast(ray, out hit, 100, ~layerMask3)
-            && moving == true)
+            if (Physics.Raycast(ray, out hit, 100, ~(1<<5))
+            ||Physics.Raycast(ray, out hit, 100, ~(1<<10))
+            ||Physics.Raycast(ray, out hit, 100, ~(1<<15))
+            && moving == false)
             {
                 popUpText.GetComponent<PopUp>().activatePopUp = true;
             }

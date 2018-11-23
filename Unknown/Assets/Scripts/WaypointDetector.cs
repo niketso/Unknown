@@ -12,7 +12,7 @@ public class WaypointDetector : MonoBehaviour {
         if (other.tag == "Player" )
         {                    
             inWaypoint = true;
-            Debug.Log("entro");
+            //Debug.Log("entro");
         }
 
             
@@ -23,7 +23,7 @@ public class WaypointDetector : MonoBehaviour {
         if (other.tag =="Player")
         {
             inWaypoint = false;
-            Debug.Log("salio");
+            //Debug.Log("salio");
 
         }
     }

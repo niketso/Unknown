@@ -46,7 +46,7 @@ public class TextActivator : MonoBehaviour
 
     void ShowInfo(string name)
     {
-        Debug.Log("SHOWINFO --" + name);
+        //Debug.Log("SHOWINFO --" + name);
         this.GetComponent<Image>().enabled = true;
         actionDisplay.enabled = true;
         //actionDisplay.enabled = true; //Turn On Text Object

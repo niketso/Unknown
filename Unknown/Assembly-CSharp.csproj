@@ -61,6 +61,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Arrow.cs" />
     <Compile Include="Assets\Art\Materials\KriptoFX\Realistic Effects Pack v4\PostEffects\Mobile\RFX4_DistortionAndBloom.cs" />
     <Compile Include="Assets\Art\Materials\KriptoFX\Realistic Effects Pack v4\PostEffects\PC\Bloom\Bloom_RFX4.cs" />
     <Compile Include="Assets\Art\Materials\KriptoFX\Realistic Effects Pack v4\PostEffects\PC\Common\ImageEffectHelper_FPS.cs" />
