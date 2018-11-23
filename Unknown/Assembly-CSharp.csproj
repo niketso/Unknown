@@ -123,6 +123,7 @@
      <Compile Include="Assets\Scripts\MovePlayer.cs" />
      <Compile Include="Assets\Scripts\NotesController.cs" />
      <Compile Include="Assets\Scripts\NotesControllerContainer.cs" />
+     <Compile Include="Assets\Scripts\PauseMenu.cs" />
      <Compile Include="Assets\Scripts\PlayerCollision.cs" />
      <Compile Include="Assets\Scripts\PlayerPickup.cs" />
      <Compile Include="Assets\Scripts\PopUp.cs" />
