@@ -9,17 +9,16 @@ public class PopUp : MonoBehaviour {
 
 	private void Awake()
 	{
+        this.gameObject.SetActive(false);
 		this.GetComponent<Image>().enabled = false;
 		this.GetComponentInChildren<Text>().enabled = false;
 	}
 
 	
-	private void Update() {
-		  if (activatePopUp)
-        {
-            
-            ShowPopUpText();
-        }
+	private void Update()
+    {       
+        if (activatePopUp)            
+            ShowPopUpText();        
         else
         {
             activatePopUp = false;

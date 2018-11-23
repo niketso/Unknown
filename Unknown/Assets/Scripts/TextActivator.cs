@@ -9,7 +9,7 @@ public class TextActivator : MonoBehaviour
     public Text actionDisplay; //Text That Will Show ToolTip   
     // int layerMask; //Used To Filter Which Colliders Will Be Hit By Raycast
     // Use this for initialization
-
+    
     void Awake()
     {
         
@@ -30,7 +30,7 @@ public class TextActivator : MonoBehaviour
                                                                     //hit.collider.gameObject.layer
         bool hitSomething = Physics.Raycast(ray, out hit, 1000.0f);
         if (!hitSomething)
-            return;
+            return;//!Physics.Raycast(ray, out hit, 100, layerMask5) &&
         int layer = hit.collider.gameObject.layer;
         if (layer == 10 || layer >= 12) // Starting point, direction, distance, layer to interact with
         {
