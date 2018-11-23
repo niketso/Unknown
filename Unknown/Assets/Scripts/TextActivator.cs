@@ -12,6 +12,7 @@ public class TextActivator : MonoBehaviour
 
     void Awake()
     {
+        
         this.GetComponent<Image>().enabled = false;
         actionDisplay.enabled = false; //Start Out Disabled
 
