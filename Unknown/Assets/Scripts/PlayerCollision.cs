@@ -31,7 +31,7 @@ public class PlayerCollision : MonoBehaviour
 
     private void OnCollisionEnter(Collision collisionInfo)
     {
-        if (collisionInfo.collider.tag == "Enemy")
+        if (collisionInfo.collider.tag == "Enemy"|| collisionInfo.collider.tag == "Fire")
         {
             sound.PlayOneShot(hurtSound);
             func.TakeDamage();
@@ -70,8 +70,8 @@ public class PlayerCollision : MonoBehaviour
 
         if (other.tag == "Corridor")
         {
-            cam1.transform.localPosition = new Vector3(13.487f, 30.924f, 9.782f);
-            cam1.transform.localRotation = Quaternion.Euler(14.635f, 111f, -0.591f);
+            cam1.transform.localPosition = new Vector3(13.40071f, 30.40394f, 9.793617f);
+            cam1.transform.localRotation = Quaternion.Euler(20.494f, 134.969f, 0f);
             //corridor.SetActive(true);
             //room.SetActive(false);
 
@@ -90,8 +90,14 @@ public class PlayerCollision : MonoBehaviour
 
         if (other.tag == "Corridor2")
         {
-            cam1.transform.localPosition = new Vector3(13.75034f, 29.46022f, 10.14731f);
-            cam1.transform.localRotation = Quaternion.Euler(8.802f, 163.636f, 0f);
+            cam1.transform.localPosition = new Vector3(13.40071f, 30.40394f, 9.793617f);
+            cam1.transform.localRotation = Quaternion.Euler(20.494f, 134.969f, 0f);
+        }
+
+        if (other.tag == "WaitingRoom")
+        {
+            cam1.transform.localPosition = new Vector3(42.71601f, 30.13642f, -25.16028f);
+            cam1.transform.localRotation = Quaternion.Euler(14.994f, -56.342f, 0f);
         }
 
         if (other.tag == "Corridor3")
@@ -109,8 +115,8 @@ public class PlayerCollision : MonoBehaviour
 
         if (other.tag == "Room")
         {
-            cam1.transform.localPosition = new Vector3(42.81741f, 31.25477f, 9.659981f);
-            cam1.transform.localRotation = Quaternion.Euler(19.631f, -126.681f, 0f);
+            cam1.transform.localPosition = new Vector3(38.45164f, 30.21566f, 9.782761f);
+            cam1.transform.localRotation = Quaternion.Euler(20.322f, -130.665f, 0f);
             //corridor.SetActive(false);
             //room.SetActive(true);
             //goToCorridor.SetActive(true);
