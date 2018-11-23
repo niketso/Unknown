@@ -6,13 +6,13 @@ using UnityEngine.UI;
 public class TextActivator : MonoBehaviour
 {
 
-    public Text actionDisplay; //Text That Will Show ToolTip
-
+    public Text actionDisplay; //Text That Will Show ToolTip   
     // int layerMask; //Used To Filter Which Colliders Will Be Hit By Raycast
-
     // Use this for initialization
-    void Start()
+
+    void Awake()
     {
+        this.GetComponent<Image>().enabled = false;
         actionDisplay.enabled = false; //Start Out Disabled
 
         //layerMask = LayerMask.GetMask("Destinations", "Hint", "Consumable", "Object", "PickUp"); //Only Objects On The Character Layer Will Be Afected
@@ -37,17 +37,19 @@ public class TextActivator : MonoBehaviour
         }
         else
         {
-            actionDisplay.enabled = false; //Turn Off Text When Mouse Isn't Over Appropriate Collider
+            //actionDisplay.enabled = false; //Turn Off Text When Mouse Isn't Over Appropriate Collider
+            this.GetComponent<Image>().enabled = false;
+            actionDisplay.enabled = false;
         }
     }
 
-
     void ShowInfo(string name)
     {
-        actionDisplay.enabled = true; //Turn On Text Object
-
+        Debug.Log("SHOWINFO --" + name);
+        this.GetComponent<Image>().enabled = true;
+        actionDisplay.enabled = true;
+        //actionDisplay.enabled = true; //Turn On Text Object
         actionDisplay.text = name; //Update Text
-
         // gameObject.transform.position = Input.mousePosition; //Move Text To Mouse's Position
     }
 }
