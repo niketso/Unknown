@@ -54,7 +54,7 @@ public class MovePlayer : MonoBehaviour
 //
     void Update()
     {
-        //Debug.Log("MOVING: " + moving);
+        Debug.Log("MOVING TO: " + agent.destination);
         //Debug.Log("REMAINING DISTANCE = " + agent.remainingDistance);
         
         cooldownDamage += Time.deltaTime;
@@ -72,6 +72,7 @@ public class MovePlayer : MonoBehaviour
                 moving == false)
             {
                 Debug.Log("LAYER DEL HIT 1 = " + hit.transform.gameObject.layer);
+                
                 if (hit.transform.tag == ("Door") && hit.transform.gameObject.GetComponent<DoorBehaviour>().isUnlocked == false)
                 {
                     Debug.Log("PUERTA CERRADA");
@@ -79,14 +80,14 @@ public class MovePlayer : MonoBehaviour
                     anim.SetBool("Moving", false);
                     anim.SetTrigger("Idle");
                 }
-                else if (hit.transform.tag == ("Arrow"))
+                if (hit.transform.tag == ("Arrow"))
                 {
                     anim.SetBool("Moving", true);
                     anim.SetTrigger("Walk");
                     agent.destination = hit.transform.GetComponent<Arrow>().arrowDestination.transform.position;
                     agent.stoppingDistance = 0;
                 }
-                else
+                if (hit.transform.tag != ("Door") && hit.transform.tag != ("Arrow"))
                 {
                     anim.SetBool("Moving", true);
                     anim.SetTrigger("Walk");
@@ -95,14 +96,6 @@ public class MovePlayer : MonoBehaviour
                 }
             }
 
-            if (Physics.Raycast(ray, out hit, 100, layerMask5) && moving == false)
-            {
-                Debug.Log("LAYER DEL HIT 2 = " + hit.transform.gameObject.layer);
-                anim.SetBool("Moving", true);
-                anim.SetTrigger("Walk");
-                agent.destination = hit.transform.position;
-                agent.stoppingDistance = 0;
-            }
             if (!Physics.Raycast(ray, out hit, 100, layerMask7) &&
                 !Physics.Raycast(ray, out hit, 100, layerMask5) &&
                 Physics.Raycast(ray, out hit, 100, layerMask6)
